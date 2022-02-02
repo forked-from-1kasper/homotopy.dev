@@ -22,31 +22,27 @@
                  tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']],
                             processEscapes: true }
              };
-</script></head><body class="content"></body></html><html><head><meta property="og:title" content="PROCESS"><meta property="og:description" content="Process Calculus Modality (Guarded Cubical)."><meta property="og:url" content="https://homotopy.dev/foundations/modal/process/"></head></html><title>PROCESS</title><article class="main"><div class="om"><section><h1>PROCESS</h1></section><aside><a href="https://homotopy.dev/library/">Homotopy Library</a><Published><24>MAY 2018</24></Published></aside><p>Process Calculus defines formal business process engine that could
+</script></head><body class="content"></body></html><html><head><meta property="og:title" content="PROCESS"><meta property="og:description" content="Process Calculus Modality (Guarded Cubical)."><meta property="og:url" content="https://homotopy.dev/foundations/modal/process/"></head></html><title>PROCESS</title><article class="main"><div class="exe"><section><h1>PROCESS</h1></section></div><aside><a href="https://homotopy.dev/library/">Homotopy Library</a><time>Published: 24 MAY 2018</time></aside><div class="exe"><section><p>Process Calculus defines formal business process engine that could
 be mapped onto Synrc/BPE Erlang/OTP application or OCaml Lwt library
-with Coq.io front-end. Here we will describe an Erlang approach for modeling processes.
-</p><p>We will describe process calculus as a formal model of two types:
+with Coq.io front-end. Here we will describe an Erlang approach for modeling processes.</p><p>We will describe process calculus as a formal model of two types:
 1) the general abstract MLTT interface of process modality that can be used
 as a formal binding to low-level programming or as a top-level interface;
-2) the low-level formal model of Erlang/OTP generic server.
-</p></div><div class="types"><h2>Process Encoding</h2><div class="type"><ol class="type__col"><h3>FORMER</h3><li><a href="#process">PROCESS</a></li></ol><ol class="type__col"><h3>INTROS</h3><li><a href="#spawn">SPAWN</a></li></ol><ol class="type__col"><h3>ELIMS</h3><li><a href="#accs">ACCS</a></li><li><a href="#exec">EXEC</a></li><li><a href="#recv">RECV</a></li><li><a href="#send">SEND</a></li></ol><ol class="type__col"><h3>COMP</h3><li><a href="#beta">BETA</a></li><li><a href="#eta">ETA</a></li></ol></div><br><p>According to MLTT, declaring a type means formally defining its formation rule or type former,
+2) the low-level formal model of Erlang/OTP generic server.</p><p>According to MLTT, declaring a type means formally defining its formation rule or type former,
 sole introduction rule, a lot of elims (projections and modality morphisms, recursor, and induction),
 and beta and eta computational equalities. In this article we will formally define
 process modality and will end up with two examples: Erlang/OTP generic server
-process and Synrc/BPE application.
-</p><section><h1>Modality</h1></section></div><br><section><p><b>Definition</b> (Storage). The secure storage based on verified
+process and Synrc/BPE application.</p><br><h1>MODALITY</h1><p><b>Definition</b> (Storage). The secure storage based on verified
 cryptography. NOTE: For simplicity let it be a compatible list.
-</p><code>storage: U -> U = list
-</code><p><b>Definition</b> (Process). The type formation rule of the process
+</p><code>storage: U -> U = list</code><p><b>Definition</b> (Process). The type formation rule of the process
 is a $\Sigma$ telescope that contains: i) protocol type; ii) state type;
 iii) in-memory current state of process in the form of cartesian product
 of protocol and state which is called signature of the process; iv) monoidal
 action on signature; v) persistent storage for process trace.
 </p><code>process : U
-        = (protocol state: U)
-        * (current: prod protocol state)
-        * (act: id (prod protocol state))
-        * (storage (prod protocol state))
+    = (protocol state: U)
+    * (current: prod protocol state)
+    * (act: id (prod protocol state))
+    * (storage (prod protocol state))
 </code><p><b>Definition</b> (Spawn). The sole introduction rule, process constructor
 is a tuple with filled process type information. Spawn is a modal arrow
 representing the fact that process instance is created at some
@@ -60,17 +56,18 @@ i) protocol type; ii) state type; iii) signature of the
 process; iv) current state of the process; v) action
 projection; vi) trace projection.
 </p><code>protocol  (p: process): U = p.1
-state     (p: process): U = p.2.1
-signature (p: process): U = prod p.1 p.2.1
-current   (p: process):          signature p  = p.2.2.1
-action    (p: process):      id (signature p) = p.2.2.2.1
-trace     (p: process): storage (signature p) = p.2.2.2.2
+    state     (p: process): U = p.2.1
+    signature (p: process): U = prod p.1 p.2.1
+    current   (p: process):          signature p  = p.2.2.1
+    action    (p: process):      id (signature p) = p.2.2.2.1
+    trace     (p: process): storage (signature p) = p.2.2.2.2
 </code><p>NOTE: there are two kinds of approaches to process design:
 1) Semigroup: $P \times S \rightarrow S$;
 and 2) Monoidal: $P \times S \rightarrow P \times S$,
 where P is protocol and S is state of the process.
 </p><p><b>Definition</b> (Receive). The modal arrow that represents
-sleep of the process until protocol message arrived.</p><code>receive (p: process) : protocol p = axiom
+sleep of the process until protocol message arrived.
+</p><code>receive (p: process) : protocol p = axiom
 </code><p><b>Definition</b> (Send). The response free function that represents
 sending a message to a particular process in the run-time. The Send
 nature is async and invisible but is a part of process modality as
@@ -81,8 +78,8 @@ eliminator of process stream performing addition of a single entry
 to the secured storage of the process. Execute is a transactional
 or synchronized version of asynchronous Send.
 </p><code>execute (p: process) (message: protocol p) : process
-     = let step: signature p = (action p) (message, (current p).2)
-        in (protocol p, state p, step, action p, cons step (trace p))</code><br></section><div class="om"><section><h1>Applications</h1></section><p>1) Run-time formal model
+  = let step: signature p = (action p) (message, (current p).2)
+    in (protocol p, state p, step, action p, cons step (trace p))</code><br><h1>Applications</h1><p>1) Run-time formal model
 of Erlang/OTP compatible generic server with extraction to Erlang.
 This is an example of low-level process modality usage.
 The run-time formal model can be seen here:
@@ -92,4 +89,4 @@ extracted model. The Synrc/BPE model can be seen here:
 <a href="https://n2o.space/articles/bpe.htm">bpe</a>.
 </p><p>3) Formal model of Synrc/N2O application and
 <a href="https://mqtt.n2o.space/man/n2o_async.htm">n2o_async</a> in particular.
-</p></div></article><footer class="footer"><a href="https://homotopy.dev/library/"><img class="footer__logo" src="https://longchenpa.guru/seal.png" width="50"></a><span class="footer__copy">2021&mdash;2022 &copy; <a href="//groupoid.space/" style="color:Lavender;">Groupoïd Infinity</a></span><script src="https://homotopy.dev/bundle.js"></script><script src="https://homotopy.dev/highlight.js"></script></footer>
+</p></section></div></article><footer class="footer"><a href="https://homotopy.dev/library/"><img class="footer__logo" src="https://longchenpa.guru/seal.png" width="50"></a><span class="footer__copy">2021&mdash;2022 &copy; <a href="//groupoid.space/" style="color:Lavender;">Groupoïd Infinity</a></span><script src="https://homotopy.dev/bundle.js"></script><script src="https://homotopy.dev/highlight.js"></script></footer>
