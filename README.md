@@ -12,7 +12,7 @@ Coequlizer and HubSpokes Disc in the style of HoTT/Coq homotopy library and Thre
 In the `foundations` folder presented the MLTT, Modal and Univalent base libraries:
 
 ```
-groupoid.space/foundations/
+homotopy.dev/foundations/
 ├── mltt/
 │   ├── bool/
 │   ├── either/
@@ -40,7 +40,7 @@ groupoid.space/foundations/
 In the `mathematics` folder you will find Mathematical Components for HTS:
 
 ```
-groupoid.space/mathematics/
+homotopy.dev/mathematics/
 ├── algebra/
 │   ├── homology/
 │   └── algebra/
