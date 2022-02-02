@@ -1,4 +1,4 @@
-# Anders: Modal Homotopy Type System
+# Anders: Homotopy Library Manual
 
 Anders is a HoTT theorem prover based on: classical MLTT-80 with 0, 1, 2, W types;
 CCHM in CHM flavour as cubical type system with hcomp/trans Kan operations;
