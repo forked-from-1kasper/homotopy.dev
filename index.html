@@ -1,4 +1,24 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="author" content="Maxim Sokhatsky"><meta name="twitter:site" content="@5HT"><meta name="twitter:creator" content="@5HT"><meta property="og:type" content="website"><meta property="fb:app_id" content="118554188236439"><meta property="og:url" content="https://groupoid.space"><meta property="og:title" content="GROUPOЇD"><meta property="og:description" content="Formalization of Mathematics"><link rel="stylesheet" href="https://groupoid.space/main.css?v=50"><title>HOMOTOPY</title><script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script><script>window.MathJax = { jax: ["input/TeX", "input/MathML", "input/AsciiMath", "output/CommonHTML", "output/NativeMML"],
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="author" content="Namdak Tonpa"><meta name="twitter:site" content="@5HT"><meta name="twitter:creator" content="@5HT"><meta property="og:title" content="ANDERS"><meta property="og:description" content="Modal Homotopy Type System"><meta property="og:type" content="website"><meta property="fb:app_id" content="118554188236439"><meta property="og:url" content="https://homotopy.dev/"><link rel="stylesheet" href="https://groupoid.space/main.css?v=49"><title>ANDERS</title><script src="https://groupoid.space/styles/mathjax.js?config=TeX-AMS_HTML"></script><script>window.MathJax = { jax: ["input/TeX", "input/MathML", "input/AsciiMath", "output/CommonHTML", "output/NativeMML"],
+               TeX: { extensions: ["AMSmath.js", "AMSsymbols.js", "autoload-all.js"] },
+               extensions: ["tex2jax.js", "asciimath2jax.js", "mml2jax.js", "MathMenu.js", "MathZoom.js"],
+               "HTML-CSS": { imageFont: null },
+               AuthorInit: function() {
+                   MathJax.Hub.Register.StartupHook("TeX AMSmath Ready", function() {
+                       var TEX = MathJax.InputJax.TeX;
+                       TEX.Definitions.Add({
+                           macros: {
+                             llparenthesis: ['Macro', '\\mathopen{\u2987}'],
+                             rrparenthesis: ['Macro', '\\mathclose{\u2988}'],
+                             llbracket:     ['Macro', '\\mathopen{\u27E6}'],
+                             rrbracket:     ['Macro', '\\mathclose{\u27E7}'],
+                           }
+                       });
+                   });
+               },
+               tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']],
+                          processEscapes: true }
+           };
+</script></head></html><body class="content"></body><title>HOMOTOPY</title><script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script><script>window.MathJax = { jax: ["input/TeX", "input/MathML", "input/AsciiMath", "output/CommonHTML", "output/NativeMML"],
                         TeX: { extensions: ["AMSmath.js", "AMSsymbols.js", "autoload-all.js"] },
                         extensions: ["tex2jax.js", "asciimath2jax.js", "mml2jax.js", "MathMenu.js", "MathZoom.js"],
                         "HTML-CSS": { imageFont: null },
@@ -22,7 +42,7 @@
                         tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']],
                                    processEscapes: true }
                     };
-</script></head><body class="content"><header class="header"><div class="header__titles"><h1 class="header__title">Homotopy Type System</h1><h4 class="header__subtitle">Modal Type Theory with Two Equalities<br>Syntax and Semantics</h4></div></header><article class="main"><div class="exe"><section><h1>SYNOPSIS</h1></section><aside><a href="https://github.com/5HT">5HT</a><br><a href="https://github.com/forked-from-1kasper">Siegmentation Fault</a><time>4 JUL 2021</time><p>Anders is HoTT theorem prover based on: classical <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.131.926&rep=rep1&type=pdf">MLTT-80</a> [14] with 0, 1, 2, W types;
+</script><header class="header"><div class="header__titles"><h1 class="header__title">Homotopy Type System</h1><h4 class="header__subtitle">Modal Type Theory with Two Equalities<br>Syntax and Semantics</h4></div></header><article class="main"><div class="exe"><section><h1>SYNOPSIS</h1></section><aside><a href="https://github.com/5HT">5HT</a><br><a href="https://github.com/forked-from-1kasper">Siegmentation Fault</a><time>4 JUL 2021</time><p>Anders is Modal HoTT theorem prover based on: classical <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.131.926&rep=rep1&type=pdf">MLTT-80</a> [14] with 0, 1, 2, W types;
 <a href="https://arxiv.org/pdf/1611.02108.pdf">CCHM</a> [4] in CHM flavour as cubical type system with hcomp/transp Kan operations;
 HTS strict equality on pretypes; <a href="https://arxiv.org/pdf/1806.05966.pdf">de Rham</a> [19]  stack modality primitives.
 We tend not to touch general recursive higher inductive schemes yet,
@@ -376,4 +396,5 @@ found in many <b>MLTT</b> base libraries.</p><p><center><table cellspacing=5><tr
 </p><h2>MLTT</h2><p>14) <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.131.926&rep=rep1&type=pdf">An intuitionistic theory of types</a> [Martin-Löf];
 15) <a href="http://archive-pml.github.io/martin-lof/pdfs/An-Intuitionistic-Theory-of-Types-Predicative-Part-1975.pdf">An intuitionistic theory of types: predicative part.</a> [Martin-Löf];
 16) <a href="http://www.ens-lyon.fr/denif/data/martin_lof_prog/1990/contenu/book.pdf">Programming in Martin-Löf’s Type Theory</a> [Nordström, Petersson, Smith];
-17) <a href="http://www.cse.chalmers.se/~bengt/papers/GKminiTT.pdf">A simple type-theoretic language: Mini-TT</a> [Coquand, Kinoshita, Nordström, Takeyama];</p></section></div></article><footer class="footer"><a href="https://groupoid.space/"><img class="footer__logo" src="https://longchenpa.guru/seal.png" width="50"></a><span class="footer__copy">2016&mdash;2022 &copy; <a href="//5ht.co/" style="color:Lavender;">Namdak Tönpa</a></span></footer><script src="https://groupoid.space/bundle.js?v=7"></script><script src="https://groupoid.space/highlight.js?v=44"></script></body></html>
+17) <a href="http://www.cse.chalmers.se/~bengt/papers/GKminiTT.pdf">A simple type-theoretic language: Mini-TT</a> [Coquand, Kinoshita, Nordström, Takeyama];
+</p></section></div></article><footer class="footer"><a href="https://groupoid.space/"><img class="footer__logo" src="https://longchenpa.guru/seal.png" width="50"></a><span class="footer__copy">2016&mdash;2022 &copy; <a href="//5ht.co/" style="color:Lavender;">Namdak Tönpa</a></span></footer><script src="https://groupoid.space/bundle.js?v=7"></script><script src="https://groupoid.space/highlight.js?v=44"></script>

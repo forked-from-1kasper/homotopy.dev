@@ -1,4 +1,52 @@
-extends layout.pug
+mixin header(logo, title, subtitle)
+    header.header
+        .header__titles
+            h1.header__title!= title
+            h4.header__subtitle!= subtitle
+
+doctype html
+html
+    head
+        meta(charset='utf-8')
+        meta(http-equiv='x-ua-compatible' content='ie=edge')
+        meta(name='viewport'        content='width=device-width, initial-scale=1')
+        meta(name='author'          content='Namdak Tonpa')
+        meta(name='twitter:site'    content='@5HT')
+        meta(name='twitter:creator' content='@5HT')
+        meta(property='og:title'       content='ANDERS')
+        meta(property='og:description' content='Modal Homotopy Type System')
+        meta(property='og:type'        content='website')
+        meta(property='fb:app_id'      content='118554188236439')
+        meta(property='og:url'         content='https://homotopy.dev/')
+        link(rel='stylesheet' href='https://groupoid.space/main.css?v=49')
+        block title
+            title ANDERS
+            script(src='https://groupoid.space/styles/mathjax.js?config=TeX-AMS_HTML')
+            script.
+              window.MathJax = { jax: ["input/TeX", "input/MathML", "input/AsciiMath", "output/CommonHTML", "output/NativeMML"],
+                             TeX: { extensions: ["AMSmath.js", "AMSsymbols.js", "autoload-all.js"] },
+                             extensions: ["tex2jax.js", "asciimath2jax.js", "mml2jax.js", "MathMenu.js", "MathZoom.js"],
+                             "HTML-CSS": { imageFont: null },
+                             AuthorInit: function() {
+                                 MathJax.Hub.Register.StartupHook("TeX AMSmath Ready", function() {
+                                     var TEX = MathJax.InputJax.TeX;
+                                     TEX.Definitions.Add({
+                                         macros: {
+                                           llparenthesis: ['Macro', '\\mathopen{\u2987}'],
+                                           rrparenthesis: ['Macro', '\\mathclose{\u2988}'],
+                                           llbracket:     ['Macro', '\\mathopen{\u27E6}'],
+                                           rrbracket:     ['Macro', '\\mathclose{\u27E7}'],
+                                         }
+                                     });
+                                 });
+                             },
+                             tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']],
+                                        processEscapes: true }
+                         };
+
+body.content
+    block content
+    block vars
 
 block title
     title HOMOTOPY
@@ -40,7 +88,7 @@ block content
                 <a href="https://github.com/forked-from-1kasper">Siegmentation Fault</a>
                 time 4 JUL 2021
                 p.
-                    Anders is HoTT theorem prover based on: classical <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.131.926&rep=rep1&type=pdf">MLTT-80</a> [14] with 0, 1, 2, W types;
+                    Anders is Modal HoTT theorem prover based on: classical <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.131.926&rep=rep1&type=pdf">MLTT-80</a> [14] with 0, 1, 2, W types;
                     <a href="https://arxiv.org/pdf/1611.02108.pdf">CCHM</a> [4] in CHM flavour as cubical type system with hcomp/transp Kan operations;
                     HTS strict equality on pretypes; <a href="https://arxiv.org/pdf/1806.05966.pdf">de Rham</a> [19]  stack modality primitives.
                     We tend not to touch general recursive higher inductive schemes yet,
@@ -641,3 +689,10 @@ block content
                     15) <a href="http://archive-pml.github.io/martin-lof/pdfs/An-Intuitionistic-Theory-of-Types-Predicative-Part-1975.pdf">An intuitionistic theory of types: predicative part.</a> [Martin-Löf];
                     16) <a href="http://www.ens-lyon.fr/denif/data/martin_lof_prog/1990/contenu/book.pdf">Programming in Martin-Löf’s Type Theory</a> [Nordström, Petersson, Smith];
                     17) <a href="http://www.cse.chalmers.se/~bengt/papers/GKminiTT.pdf">A simple type-theoretic language: Mini-TT</a> [Coquand, Kinoshita, Nordström, Takeyama];
+
+    footer.footer
+        a(href='https://groupoid.space/')
+            img.footer__logo(src='https://longchenpa.guru/seal.png',width=50)
+        span.footer__copy 2016&mdash;2022 &copy; <a href="//5ht.co/" style="color:Lavender;">Namdak Tönpa</a>
+    script(src='https://groupoid.space/bundle.js?v=7')
+    script(src='https://groupoid.space/highlight.js?v=44')
