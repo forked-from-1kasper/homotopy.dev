@@ -22,7 +22,7 @@
                  tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']],
                             processEscapes: true }
              };
-</script></head><body class="content"></body></html><title>IOI</title><header class="header"><div class="header__titles"><h1 class="header__title">Corecursive I/O</h1><h4 class="header__subtitle">I/O Library</h4></div></header><article class="main"><div class="om"><section><h1>Infinity I/O Monads</h1></section></div><section><h2 id="ioi">IOI</h2><p>Infinity I/O</p><code>data IOI.F (A,State: Type): Type :=
+</script></head><body class="content"></body></html><title>IOI</title><article class="main"><div class="om"><section><h1>Infinity I/O Monads</h1></section></div><section><h2 id="ioi">IOI</h2><p>Infinity I/O</p><code>data IOI.F (A,State: Type): Type :=
      (getLine: (String → State) → IO)
      (putLine: String → State → IO)
      (pure: A → IO)
