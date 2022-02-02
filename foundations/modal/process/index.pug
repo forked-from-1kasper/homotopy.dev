@@ -1,39 +1,21 @@
-extends ../../../layout.pug
+include ../../../header
+
+html
+    head
+        meta(property='og:title'       content='PROCESS')
+        meta(property='og:description' content='Process Calculus Modality (Guarded Cubical).')
+        meta(property='og:url'         content='https://homotopy.dev/foundations/modal/process/')
 
 block title
-    script(src='https://groupoid.space/styles/mathjax.js?config=TeX-AMS_HTML')
-    script.
-     window.MathJax = { jax: ["input/TeX", "input/MathML", "input/AsciiMath", "output/CommonHTML", "output/NativeMML"],
-                             TeX: { extensions: ["AMSmath.js", "AMSsymbols.js", "autoload-all.js"] },
-                             extensions: ["tex2jax.js", "asciimath2jax.js", "mml2jax.js", "MathMenu.js", "MathZoom.js"],
-                             "HTML-CSS": { imageFont: null },
-                             AuthorInit: function() {
-                                 MathJax.Hub.Register.StartupHook("TeX AMSmath Ready", function() {
-                                     var TEX = MathJax.InputJax.TeX;
-                                     TEX.Definitions.Add({
-                                         macros: {
-                                           llparenthesis: ['Macro', '\\mathopen{\u2987}'],
-                                           rrparenthesis: ['Macro', '\\mathclose{\u2988}'],
-                                           llbracket:     ['Macro', '\\mathopen{\u27E6}'],
-                                           rrbracket:     ['Macro', '\\mathclose{\u27E7}'],
-                                           incmap:        ['Macro', '\\mathclose{\u21AA}'],
-                                         }
-                                     });
-                                 });
-                             },
-                             tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']],
-                                        processEscapes: true }
-                         };
-    title LTS
+    title PROCESS
 
 block content
-    +header('../../groupoid.svg', 'Process Calculus', 'Formal Model of Business Process Engine')
     article.main
         .om
             section
-                h1 Intro
-            aside Максим Сохацький, Київ<br>
-                24-05-2018
+                h1 PROCESS
+            aside <a href="https://homotopy.dev/library/">Homotopy Library</a>
+                Published: 24 MAY 2018
             p.
                 Process Calculus defines formal business process engine that could
                 be mapped onto Synrc/BPE Erlang/OTP application or OCaml Lwt library
@@ -70,7 +52,7 @@ block content
                 process and Synrc/BPE application.
 
             section
-                h1 Process Modality
+                h1 Modality
 
         br.
         section
@@ -174,3 +156,4 @@ block content
                 3) Formal model of Synrc/N2O application and
                 <a href="https://mqtt.n2o.space/man/n2o_async.htm">n2o_async</a> in particular.
 
+include ../../../footer

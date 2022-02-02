@@ -1,25 +1,25 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="author" content="Maxim Sokhatsky"><meta name="twitter:site" content="@5HT"><meta name="twitter:creator" content="@5HT"><meta property="og:title" content="Presheaf Type Theories"><meta property="og:description" content="Here is shown the preshifification of cartesian closed categories or topoi."><meta property="og:type" content="website"><meta property="fb:app_id" content="118554188236439"><meta property="og:url" content="https://sheaf.space"><link rel="stylesheet" href="https://groupoid.space/main.css"><title>SHEAF</title></head><body class="content"></body></html><script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script><script>window.MathJax = { jax: ["input/TeX", "input/MathML", "input/AsciiMath", "output/CommonHTML", "output/NativeMML"],
-                        TeX: { extensions: ["AMSmath.js", "AMSsymbols.js", "autoload-all.js"] },
-                        extensions: ["tex2jax.js", "asciimath2jax.js", "mml2jax.js", "MathMenu.js", "MathZoom.js"],
-                        "HTML-CSS": { imageFont: null },
-                        AuthorInit: function() {
-                            MathJax.Hub.Register.StartupHook("TeX AMSmath Ready", function() {
-                                var TEX = MathJax.InputJax.TeX;
-                                TEX.Definitions.Add({
-                                    macros: {
-                                      llparenthesis: ['Macro', '\\mathopen{\u2987}'],
-                                      rrparenthesis: ['Macro', '\\mathclose{\u2988}'],
-                                      llbracket:     ['Macro', '\\mathopen{\u27E6}'],
-                                      rrbracket:     ['Macro', '\\mathclose{\u27E7}'],
-                                      incmap:        ['Macro', '\\mathclose{\u21AA}'],
-                                    }
-                                });
-                            });
-                        },
-                        tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']],
-                                   processEscapes: true }
-                    };
-</script><article class="main"><div class="exe"><section><h1>INFINITY SHEAVES</h1></section></div><aside><a href="https://tonpa.guru">Максим Сохацький</a><time>13 JAN 2019</time></aside><div class="exe"><section><p>This article requires as prerequisites an article about the formalization
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta property="fb:app_id" content="118554188236439"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="author" content="Maxim Sokhatsky"><meta name="twitter:site" content="@5HT"><meta name="twitter:creator" content="@5HT"><meta property="og:type" content="website"><meta property="og:image" content="https://avatars.githubusercontent.com/u/17128096?s=400&amp;u=66a63d4cdd9625b2b4b37d724cc00fe6401e5bd8&amp;v=4"><link rel="stylesheet" href="https://homotopy.dev/main.css"><script src="https://groupoid.space/styles/mathjax.js?config=TeX-AMS_HTML"></script><script>window.MathJax = { jax: ["input/TeX", "input/MathML", "input/AsciiMath", "output/CommonHTML", "output/NativeMML"],
+                 TeX: { extensions: ["AMSmath.js", "AMSsymbols.js", "autoload-all.js"] },
+                 extensions: ["tex2jax.js", "asciimath2jax.js", "mml2jax.js", "MathMenu.js", "MathZoom.js"],
+                 "HTML-CSS": { imageFont: null },
+                 AuthorInit: function() {
+                     MathJax.Hub.Register.StartupHook("TeX AMSmath Ready", function() {
+                         var TEX = MathJax.InputJax.TeX;
+                         TEX.Definitions.Add({
+                             macros: {
+                               llparenthesis: ['Macro', '\\mathopen{\u2987}'],
+                               rrparenthesis: ['Macro', '\\mathclose{\u2988}'],
+                               llbracket:     ['Macro', '\\mathopen{\u27E6}'],
+                               rrbracket:     ['Macro', '\\mathclose{\u27E7}'],
+                               incmap:        ['Macro', '\\mathclose{\u21AA}'],
+                             }
+                         });
+                     });
+                 },
+                 tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']],
+                            processEscapes: true }
+             };
+</script></head><body class="content"></body></html><title>SHEAF</title><article class="main"><div class="exe"><section><h1>INFINITY SHEAVES</h1></section></div><aside><a href="https://homotopy.dev/library/">Homotopy Library</a><time>13 JAN 2019</time></aside><div class="exe"><section><p>This article requires as prerequisites an article about the formalization
 of the category theory and topos theory:
 <a href="../topos/index.html">Formal Set Topos</a>.
 </p></section><section><figure>$$\def\mapright#1{\xrightarrow{{#1}}}
@@ -37,4 +37,4 @@ naturally the fibration). To achieve this in addition to the concept
 of sheaves, he invented spectral sequences.</p><p>After the war Henri Cartan and Jean Pierre Serre developed
 the theory further, and finally the theory was brought to
 the state as we know it today by Alexandre Grothendieck.
-</p></section></div></article><link rel="stylesheet" href="https://groupoid.space/main.css?v=50"><footer class="footer"><a href="https://homotopy.dev/library/"><img class="footer__logo" src="https://longchenpa.guru/seal.png" width="50"></a><span class="footer__copy">2016&mdash;2022 &copy; <a href="https://5ht.co/" style="color:Lavender;">Namdak Tönpa</a></span><script src="https://groupoid.space/highlight.js?v=44"></script></footer>
+</p></section></div></article><footer class="footer"><a href="https://homotopy.dev/library/"><img class="footer__logo" src="https://longchenpa.guru/seal.png" width="50"></a><span class="footer__copy">2016&mdash;2022 &copy; <a href="//5ht.co/" style="color:Lavender;">Namdak Tönpa</a></span><script src="https://homotopy.dev/bundle.js"></script><script src="https://homotopy.dev/highlight.js"></script></footer>

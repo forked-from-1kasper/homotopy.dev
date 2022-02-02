@@ -1,4 +1,25 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="author" content="Maxim Sokhatsky"><meta name="twitter:site" content="@5HT"><meta name="twitter:creator" content="@5HT"><meta property="og:type" content="website"><meta property="fb:app_id" content="118554188236439"><meta property="og:url" content="https://groupoid.space"><meta property="og:title" content="GROUPOЇD"><meta property="og:description" content="Formalization of Mathematics"><link rel="stylesheet" href="https://groupoid.space/main.css?v=50"><title>IOI</title></head><body class="content"><header class="header"><div class="header__titles"><h1 class="header__title">Corecursive I/O</h1><h4 class="header__subtitle">I/O Library</h4></div></header><article class="main"><div class="om"><section><h1>Infinity I/O Monads</h1></section></div><section><h2 id="ioi">IOI</h2><p>Infinity I/O</p><code>data IOI.F (A,State: Type): Type :=
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta property="fb:app_id" content="118554188236439"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="author" content="Maxim Sokhatsky"><meta name="twitter:site" content="@5HT"><meta name="twitter:creator" content="@5HT"><meta property="og:type" content="website"><meta property="og:image" content="https://avatars.githubusercontent.com/u/17128096?s=400&amp;u=66a63d4cdd9625b2b4b37d724cc00fe6401e5bd8&amp;v=4"><link rel="stylesheet" href="https://homotopy.dev/main.css"><script src="https://groupoid.space/styles/mathjax.js?config=TeX-AMS_HTML"></script><script>window.MathJax = { jax: ["input/TeX", "input/MathML", "input/AsciiMath", "output/CommonHTML", "output/NativeMML"],
+                 TeX: { extensions: ["AMSmath.js", "AMSsymbols.js", "autoload-all.js"] },
+                 extensions: ["tex2jax.js", "asciimath2jax.js", "mml2jax.js", "MathMenu.js", "MathZoom.js"],
+                 "HTML-CSS": { imageFont: null },
+                 AuthorInit: function() {
+                     MathJax.Hub.Register.StartupHook("TeX AMSmath Ready", function() {
+                         var TEX = MathJax.InputJax.TeX;
+                         TEX.Definitions.Add({
+                             macros: {
+                               llparenthesis: ['Macro', '\\mathopen{\u2987}'],
+                               rrparenthesis: ['Macro', '\\mathclose{\u2988}'],
+                               llbracket:     ['Macro', '\\mathopen{\u27E6}'],
+                               rrbracket:     ['Macro', '\\mathclose{\u27E7}'],
+                               incmap:        ['Macro', '\\mathclose{\u21AA}'],
+                             }
+                         });
+                     });
+                 },
+                 tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']],
+                            processEscapes: true }
+             };
+</script></head><body class="content"></body></html><title>IOI</title><header class="header"><div class="header__titles"><h1 class="header__title">Corecursive I/O</h1><h4 class="header__subtitle">I/O Library</h4></div></header><article class="main"><div class="om"><section><h1>Infinity I/O Monads</h1></section></div><section><h2 id="ioi">IOI</h2><p>Infinity I/O</p><code>data IOI.F (A,State: Type): Type :=
      (getLine: (String → State) → IO)
      (putLine: String → State → IO)
      (pure: A → IO)
@@ -17,4 +38,4 @@ data IOI (A,State: Type) :=
                     (IOI.getLine r (Maybe IOI.data)
                                 (Maybe.Just IOI.data))))
 
-</code></section><div class="om"></div></article><footer class="footer"><a href="https://groupoid.space/"><img class="footer__logo" src="https://longchenpa.guru/seal.png" width="50"></a><span class="footer__copy">2016&mdash;2022 &copy; <a href="//5ht.co/" style="color:Lavender;">Namdak Tönpa</a></span></footer><script src="https://groupoid.space/bundle.js?v=7"></script><script src="https://groupoid.space/highlight.js?v=44"></script></body></html>
+</code></section><div class="om"></div></article><footer class="footer"><a href="https://homotopy.dev/library/"><img class="footer__logo" src="https://longchenpa.guru/seal.png" width="50"></a><span class="footer__copy">2016&mdash;2022 &copy; <a href="//5ht.co/" style="color:Lavender;">Namdak Tönpa</a></span><script src="https://homotopy.dev/bundle.js"></script><script src="https://homotopy.dev/highlight.js"></script></footer>

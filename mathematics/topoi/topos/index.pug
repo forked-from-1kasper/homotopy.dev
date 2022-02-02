@@ -1,47 +1,7 @@
-doctype html
-html
-    head
-        meta(charset='utf-8')
-        meta(http-equiv='x-ua-compatible' content='ie=edge')
-        meta(name='viewport'        content='width=device-width, initial-scale=1')
-        meta(name='author'          content='Maxim Sokhatsky')
-        meta(name='twitter:site'    content='@5HT')
-        meta(name='twitter:creator' content='@5HT')
-        meta(property='og:title'       content='Formal Set Topos')
-        meta(property='og:description' content='Here is given formal definitions of topos on a cetegory of sets.')
-        meta(property='og:type'        content='website')
-        meta(property='fb:app_id'      content='118554188236439')
-        meta(property='og:url'         content='https://sheaf.space')
-        link(rel='stylesheet' href='https://groupoid.space/main.css')
-        block title
-            title TOPOS
-    body.content
-        block content
-        block vars
+include ../../../header
 
 block title
-    script(src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML')
-    script.
-     window.MathJax = { jax: ["input/TeX", "input/MathML", "input/AsciiMath", "output/CommonHTML", "output/NativeMML"],
-                             TeX: { extensions: ["AMSmath.js", "AMSsymbols.js", "autoload-all.js"] },
-                             extensions: ["tex2jax.js", "asciimath2jax.js", "mml2jax.js", "MathMenu.js", "MathZoom.js"],
-                             "HTML-CSS": { imageFont: null },
-                             AuthorInit: function() {
-                                 MathJax.Hub.Register.StartupHook("TeX AMSmath Ready", function() {
-                                     var TEX = MathJax.InputJax.TeX;
-                                     TEX.Definitions.Add({
-                                         macros: {
-                                           llparenthesis: ['Macro', '\\mathopen{\u2987}'],
-                                           rrparenthesis: ['Macro', '\\mathclose{\u2988}'],
-                                           llbracket:     ['Macro', '\\mathopen{\u27E6}'],
-                                           rrbracket:     ['Macro', '\\mathclose{\u27E7}'],
-                                         }
-                                     });
-                                 });
-                             },
-                             tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']],
-                                        processEscapes: true }
-                         };
+    title TOPOS
 
 block content
     article.main
@@ -49,7 +9,7 @@ block content
             section
                 h1 Formal Set Topos
 
-        aside <a href="https://tonpa.guru">Максим Сохацький</a>
+        aside <a href="https://homotopy.dev/library/">Homotopy Library</a>
             time 9 AUG 2018
 
         .exe
@@ -580,4 +540,4 @@ block content
                     <h3>Issue VIII: Formal Topos on Category of Sets</h3>
                     </a></td></tr></table></center>
 
-    include ../../../footer.pug
+include ../../../footer

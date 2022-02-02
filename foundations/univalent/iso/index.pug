@@ -1,32 +1,21 @@
-extends ../../../layout.pug
+include ../../../header
+
+html
+    head
+        meta(property='og:title'       content='ISO')
+        meta(property='og:description' content='Unimorphism')
+        meta(property='og:url'         content='https://groupoid.space/foundations/univalent/iso/')
 
 block title
     title ISO
-    script(src='https://groupoid.space/styles/mathjax.js?config=TeX-AMS_HTML')
-    script.
-       MathJax.Hub.Config({
-          tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true },
-          jax: ["input/TeX", "input/MathML", "input/AsciiMath", "output/CommonHTML", "output/NativeMML"],
-          TeX: { extensions: ["AMSmath.js", "AMSsymbols.js", "autoload-all.js"] },
-          extensions: ["tex2jax.js", "asciimath2jax.js", "mml2jax.js", "MathMenu.js", "MathZoom.js" ],
-          "HTML-CSS": { imageFont: null },
-          AuthorInit: function() {
-              MathJax.Hub.Register.StartupHook("TeX AMSmath Ready", function() {
-                  var TEX = MathJax.InputJax.TeX;
-                  TEX.Definitions.Add({
-                      macros: {
-                          llparenthesis: ['Macro', '\\mathopen{\u2987}'],
-                          rrparenthesis: ['Macro', '\\mathclose{\u2988}'],
-                          llbracket:     ['Macro', '\\mathopen{\u27E6}'],
-                          rrbracket:     ['Macro', '\\mathclose{\u27E7}'], } }); }); }, });
 
 block content
-    +header('../../groupoid.svg', 'Isomorphism', 'Comparing two Zeros')
     article.main
         .exe
             section
-                h1 Article
-        aside Maxim Sokhatsky
+                h1 ISO
+
+        aside <a href="https://homotopy.dev/library/">Homotopy Library</a>
             time DATE: 10 OCT 2017
         .exe
             section
@@ -311,3 +300,7 @@ block content
                     <a href="https://github.com/groupoid/groupoid.space/blob/master/articles/equ/equ.pdf">
                     <h3>Constructive Proofs of Heterogeneous Equalities in Cubical Type Theory</h3>
                     </a></td></tr></table></center>
+
+                h1 MINIVALENCE
+
+include ../../../footer

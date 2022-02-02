@@ -1,24 +1,25 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="author" content="Maxim Sokhatsky"><meta name="twitter:site" content="@5HT"><meta name="twitter:creator" content="@5HT"><meta property="og:type" content="website"><meta property="fb:app_id" content="118554188236439"><meta property="og:url" content="https://groupoid.space"><meta property="og:title" content="GROUPOЇD"><meta property="og:description" content="Formalization of Mathematics"><link rel="stylesheet" href="https://groupoid.space/main.css?v=50"><script src="https://groupoid.space/styles/mathjax.js?config=TeX-AMS_HTML"></script><script>window.MathJax = { jax: ["input/TeX", "input/MathML", "input/AsciiMath", "output/CommonHTML", "output/NativeMML"],
-                        TeX: { extensions: ["AMSmath.js", "AMSsymbols.js", "autoload-all.js"] },
-                        extensions: ["tex2jax.js", "asciimath2jax.js", "mml2jax.js", "MathMenu.js", "MathZoom.js"],
-                        "HTML-CSS": { imageFont: null },
-                        AuthorInit: function() {
-                            MathJax.Hub.Register.StartupHook("TeX AMSmath Ready", function() {
-                                var TEX = MathJax.InputJax.TeX;
-                                TEX.Definitions.Add({
-                                    macros: {
-                                      llparenthesis: ['Macro', '\\mathopen{\u2987}'],
-                                      rrparenthesis: ['Macro', '\\mathclose{\u2988}'],
-                                      llbracket:     ['Macro', '\\mathopen{\u27E6}'],
-                                      rrbracket:     ['Macro', '\\mathclose{\u27E7}'],
-                                      incmap:        ['Macro', '\\mathclose{\u21AA}'],
-                                    }
-                                });
-                            });
-                        },
-                        tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']],
-                                   processEscapes: true }
-                    };</script><title>LTS</title></head><body class="content"><header class="header"><div class="header__titles"><h1 class="header__title">Process Calculus</h1><h4 class="header__subtitle">Formal Model of Business Process Engine</h4></div></header><article class="main"><div class="om"><section><h1>Intro</h1></section><aside>Максим Сохацький, Київ<br><24-05-2018></24-05-2018></aside><p>Process Calculus defines formal business process engine that could
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta property="fb:app_id" content="118554188236439"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="author" content="Maxim Sokhatsky"><meta name="twitter:site" content="@5HT"><meta name="twitter:creator" content="@5HT"><meta property="og:type" content="website"><meta property="og:image" content="https://avatars.githubusercontent.com/u/17128096?s=400&amp;u=66a63d4cdd9625b2b4b37d724cc00fe6401e5bd8&amp;v=4"><link rel="stylesheet" href="https://homotopy.dev/main.css"><script src="https://groupoid.space/styles/mathjax.js?config=TeX-AMS_HTML"></script><script>window.MathJax = { jax: ["input/TeX", "input/MathML", "input/AsciiMath", "output/CommonHTML", "output/NativeMML"],
+                 TeX: { extensions: ["AMSmath.js", "AMSsymbols.js", "autoload-all.js"] },
+                 extensions: ["tex2jax.js", "asciimath2jax.js", "mml2jax.js", "MathMenu.js", "MathZoom.js"],
+                 "HTML-CSS": { imageFont: null },
+                 AuthorInit: function() {
+                     MathJax.Hub.Register.StartupHook("TeX AMSmath Ready", function() {
+                         var TEX = MathJax.InputJax.TeX;
+                         TEX.Definitions.Add({
+                             macros: {
+                               llparenthesis: ['Macro', '\\mathopen{\u2987}'],
+                               rrparenthesis: ['Macro', '\\mathclose{\u2988}'],
+                               llbracket:     ['Macro', '\\mathopen{\u27E6}'],
+                               rrbracket:     ['Macro', '\\mathclose{\u27E7}'],
+                               incmap:        ['Macro', '\\mathclose{\u21AA}'],
+                             }
+                         });
+                     });
+                 },
+                 tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']],
+                            processEscapes: true }
+             };
+</script></head><body class="content"></body></html><html><head><meta property="og:title" content="PROCESS"><meta property="og:description" content="Process Calculus Modality (Guarded Cubical)."><meta property="og:url" content="https://homotopy.dev/foundations/modal/process/"></head></html><title>PROCESS</title><article class="main"><div class="om"><section><h1>PROCESS</h1></section><aside><a href="https://homotopy.dev/library/">Homotopy Library</a><Published><24>MAY 2018</24></Published></aside><p>Process Calculus defines formal business process engine that could
 be mapped onto Synrc/BPE Erlang/OTP application or OCaml Lwt library
 with Coq.io front-end. Here we will describe an Erlang approach for modeling processes.
 </p><p>We will describe process calculus as a formal model of two types:
@@ -30,7 +31,7 @@ sole introduction rule, a lot of elims (projections and modality morphisms, recu
 and beta and eta computational equalities. In this article we will formally define
 process modality and will end up with two examples: Erlang/OTP generic server
 process and Synrc/BPE application.
-</p><section><h1>Process Modality</h1></section></div><br><section><p><b>Definition</b> (Storage). The secure storage based on verified
+</p><section><h1>Modality</h1></section></div><br><section><p><b>Definition</b> (Storage). The secure storage based on verified
 cryptography. NOTE: For simplicity let it be a compatible list.
 </p><code>storage: U -> U = list
 </code><p><b>Definition</b> (Process). The type formation rule of the process
@@ -87,4 +88,5 @@ The run-time formal model can be seen here:
 extracted model. The Synrc/BPE model can be seen here:
 <a href="https://n2o.space/articles/bpe.htm">bpe</a>.
 </p><p>3) Formal model of Synrc/N2O application and
-<a href="https://mqtt.n2o.space/man/n2o_async.htm">n2o_async</a> in particular.</p></div></article><footer class="footer"><a href="https://groupoid.space/"><img class="footer__logo" src="https://longchenpa.guru/seal.png" width="50"></a><span class="footer__copy">2016&mdash;2022 &copy; <a href="//5ht.co/" style="color:Lavender;">Namdak Tönpa</a></span></footer><script src="https://groupoid.space/bundle.js?v=7"></script><script src="https://groupoid.space/highlight.js?v=44"></script></body></html>
+<a href="https://mqtt.n2o.space/man/n2o_async.htm">n2o_async</a> in particular.
+</p></div></article><footer class="footer"><a href="https://homotopy.dev/library/"><img class="footer__logo" src="https://longchenpa.guru/seal.png" width="50"></a><span class="footer__copy">2016&mdash;2022 &copy; <a href="//5ht.co/" style="color:Lavender;">Namdak Tönpa</a></span><script src="https://homotopy.dev/bundle.js"></script><script src="https://homotopy.dev/highlight.js"></script></footer>

@@ -1,19 +1,25 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="author" content="Maxim Sokhatsky"><meta name="twitter:site" content="@5HT"><meta name="twitter:creator" content="@5HT"><meta property="og:type" content="website"><meta property="fb:app_id" content="118554188236439"><meta property="og:url" content="https://groupoid.space"><meta property="og:title" content="GROUPOЇD"><meta property="og:description" content="Formalization of Mathematics"><link rel="stylesheet" href="https://groupoid.space/main.css?v=50"><title>ISO</title><script src="https://groupoid.space/styles/mathjax.js?config=TeX-AMS_HTML"></script><script>MathJax.Hub.Config({
-   tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true },
-   jax: ["input/TeX", "input/MathML", "input/AsciiMath", "output/CommonHTML", "output/NativeMML"],
-   TeX: { extensions: ["AMSmath.js", "AMSsymbols.js", "autoload-all.js"] },
-   extensions: ["tex2jax.js", "asciimath2jax.js", "mml2jax.js", "MathMenu.js", "MathZoom.js" ],
-   "HTML-CSS": { imageFont: null },
-   AuthorInit: function() {
-       MathJax.Hub.Register.StartupHook("TeX AMSmath Ready", function() {
-           var TEX = MathJax.InputJax.TeX;
-           TEX.Definitions.Add({
-               macros: {
-                   llparenthesis: ['Macro', '\\mathopen{\u2987}'],
-                   rrparenthesis: ['Macro', '\\mathclose{\u2988}'],
-                   llbracket:     ['Macro', '\\mathopen{\u27E6}'],
-                   rrbracket:     ['Macro', '\\mathclose{\u27E7}'], } }); }); }, });
-</script></head><body class="content"><header class="header"><div class="header__titles"><h1 class="header__title">Isomorphism</h1><h4 class="header__subtitle">Comparing two Zeros</h4></div></header><article class="main"><div class="exe"><section><h1>Article</h1></section></div><aside>Maxim Sokhatsky<time>DATE: 10 OCT 2017</time></aside><div class="exe"><section><h2 id="nat">Background</h2><p>I've just got a <mark>cubical</mark> <a href="https://homotopytypetheory.org/2017/09/16/a-hands-on-introduction-to-cubicaltt/">type
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta property="fb:app_id" content="118554188236439"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="author" content="Maxim Sokhatsky"><meta name="twitter:site" content="@5HT"><meta name="twitter:creator" content="@5HT"><meta property="og:type" content="website"><meta property="og:image" content="https://avatars.githubusercontent.com/u/17128096?s=400&amp;u=66a63d4cdd9625b2b4b37d724cc00fe6401e5bd8&amp;v=4"><link rel="stylesheet" href="https://homotopy.dev/main.css"><script src="https://groupoid.space/styles/mathjax.js?config=TeX-AMS_HTML"></script><script>window.MathJax = { jax: ["input/TeX", "input/MathML", "input/AsciiMath", "output/CommonHTML", "output/NativeMML"],
+                 TeX: { extensions: ["AMSmath.js", "AMSsymbols.js", "autoload-all.js"] },
+                 extensions: ["tex2jax.js", "asciimath2jax.js", "mml2jax.js", "MathMenu.js", "MathZoom.js"],
+                 "HTML-CSS": { imageFont: null },
+                 AuthorInit: function() {
+                     MathJax.Hub.Register.StartupHook("TeX AMSmath Ready", function() {
+                         var TEX = MathJax.InputJax.TeX;
+                         TEX.Definitions.Add({
+                             macros: {
+                               llparenthesis: ['Macro', '\\mathopen{\u2987}'],
+                               rrparenthesis: ['Macro', '\\mathclose{\u2988}'],
+                               llbracket:     ['Macro', '\\mathopen{\u27E6}'],
+                               rrbracket:     ['Macro', '\\mathclose{\u27E7}'],
+                               incmap:        ['Macro', '\\mathclose{\u21AA}'],
+                             }
+                         });
+                     });
+                 },
+                 tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']],
+                            processEscapes: true }
+             };
+</script></head><body class="content"></body></html><html><head><meta property="og:title" content="ISO"><meta property="og:description" content="Unimorphism"><meta property="og:url" content="https://groupoid.space/foundations/univalent/iso/"></head></html><title>ISO</title><article class="main"><div class="exe"><section><h1>ISO</h1></section></div><aside><a href="https://homotopy.dev/library/">Homotopy Library</a><time>DATE: 10 OCT 2017</time></aside><div class="exe"><section><h2 id="nat">Background</h2><p>I've just got a <mark>cubical</mark> <a href="https://homotopytypetheory.org/2017/09/16/a-hands-on-introduction-to-cubicaltt/">type
 checker from Mortberg et all</a>,
 and the first thing I wanted to try was connecting
 two different values of two different types. As you may know,
@@ -191,4 +197,5 @@ comp (<!2> nat2) (fromNat (fromNatK y @ -!1)) [ (!1 = 0) ->
 (z.2 @ !0,<!1> z.2 @ (!0 /\ !1))))) ]) zero2 zero</pre><p>The code is <a href="https://raw.githubusercontent.com/groupoid/cubical/master/src/iso.ctt">here</a>.</p><p><center><table cellspacing=20><tr><td><img src="https://n2o.space/img/pdf.jpg" width=50></td><td>
 <a href="https://github.com/groupoid/groupoid.space/blob/master/articles/equ/equ.pdf">
 <h3>Constructive Proofs of Heterogeneous Equalities in Cubical Type Theory</h3>
-</a></td></tr></table></center></p></section></div></article><footer class="footer"><a href="https://groupoid.space/"><img class="footer__logo" src="https://longchenpa.guru/seal.png" width="50"></a><span class="footer__copy">2016&mdash;2022 &copy; <a href="//5ht.co/" style="color:Lavender;">Namdak Tönpa</a></span></footer><script src="https://groupoid.space/bundle.js?v=7"></script><script src="https://groupoid.space/highlight.js?v=44"></script></body></html>
+</a></td></tr></table></center>
+</p><h1>MINIVALENCE</h1></section></div></article><footer class="footer"><a href="https://homotopy.dev/library/"><img class="footer__logo" src="https://longchenpa.guru/seal.png" width="50"></a><span class="footer__copy">2016&mdash;2022 &copy; <a href="//5ht.co/" style="color:Lavender;">Namdak Tönpa</a></span><script src="https://homotopy.dev/bundle.js"></script><script src="https://homotopy.dev/highlight.js"></script></footer>

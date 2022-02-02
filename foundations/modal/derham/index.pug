@@ -1,22 +1,13 @@
-doctype html
+include ../../../header
+
 html
     head
-        meta(charset='utf-8')
-        meta(http-equiv='x-ua-compatible' content='ie=edge')
-        meta(name='viewport'        content='width=device-width, initial-scale=1')
-        meta(name='author'          content='Maxim Sokhatsky')
-        meta(name='twitter:site'    content='@5HT')
-        meta(name='twitter:creator' content='@5HT')
-        meta(property='og:title'       content='de Rham Cohesion')
-        meta(property='og:description' content='Here is shown the synthetic differential geometry in cohesive topos.')
-        meta(property='og:type'        content='website')
-        meta(property='fb:app_id'      content='118554188236439')
-        meta(property='og:url'         content='https://groupoid.space')
-        block title
-            title DE RHAM
-    body.content
-        block content
-        block vars
+        meta(property='og:title'       content='DE RHAM')
+        meta(property='og:description' content='de Rham Stack (Categotically).')
+        meta(property='og:url'         content='https://homotopy.dev/foundations/modal/derham/')
+
+block title
+    title DE RHAM
 
 block title
     script(src='https://groupoid.space/styles/mathjax.js?config=TeX-AMS_HTML')
@@ -48,7 +39,7 @@ block content
         .om
             section
                 h1 DE RHAM
-        aside <a href="https://tonpa.guru">Максим Сохацький</a>
+        aside <a href="https://homotopy.dev/library/">Homotopy Library</a>
             time 17 JAN 2019
         .om
             section
@@ -168,5 +159,5 @@ block content
                 p.
                     [1]. Urs Schreiber. <a href="https://arxiv.org/pdf/1310.7930v1.pdf">Differential cohomology in a cohesive ∞-topos</a><br>
 
-    include ../../../footer.pug
+include ../../../footer
 

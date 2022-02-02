@@ -1,38 +1,16 @@
-extends ../../../layout.pug
+include ../../../header
 
 block title
     title ALGEBRAIC STRUCTURE
-    script(src='https://groupoid.space/styles/mathjax.js?config=TeX-AMS_HTML')
-    script.
-     window.MathJax = { jax: ["input/TeX", "input/MathML", "input/AsciiMath", "output/CommonHTML", "output/NativeMML"],
-                             TeX: { extensions: ["AMSmath.js", "AMSsymbols.js", "autoload-all.js"] },
-                             extensions: ["tex2jax.js", "asciimath2jax.js", "mml2jax.js", "MathMenu.js", "MathZoom.js"],
-                             "HTML-CSS": { imageFont: null },
-                             AuthorInit: function() {
-                                 MathJax.Hub.Register.StartupHook("TeX AMSmath Ready", function() {
-                                     var TEX = MathJax.InputJax.TeX;
-                                     TEX.Definitions.Add({
-                                         macros: {
-                                           llparenthesis: ['Macro', '\\mathopen{\u2987}'],
-                                           rrparenthesis: ['Macro', '\\mathclose{\u2988}'],
-                                           llbracket:     ['Macro', '\\mathopen{\u27E6}'],
-                                           rrbracket:     ['Macro', '\\mathclose{\u27E7}'],
-                                         }
-                                     });
-                                 });
-                             },
-                             tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']],
-                                        processEscapes: true }
-                         };
 
 block content
   article.main
-    .semantics
+    .exe
       section
         h1 ALGEBRAIC STRUCTURE
-    aside <a href="..">Base Library</a>
+    aside <a href="https://homotopy.dev/library/">Homotopy Library</a>
       time Published: 24 MAR 2021
-    .semantics
+    .exe
       section
         p.
           Results presented here are formalized
@@ -40,7 +18,7 @@ block content
           using <a href="http://leanprover.github.io/">Lean Theorem Prover</a>.
 
       section
-        h1 Abstract
+        h1 ALGEBRA
         p.
           <b>Definition.</b> Signature over given types $ι, υ : \mathcal{U}$
           (called <b>indices</b>) is an element of type $ι + υ \rightarrow \mathbb{N}$.
@@ -116,3 +94,5 @@ block content
         p.
           <b>Theorem</b> (Univalence for Algebraic Structures).
             $$ (Γ \cong Λ) \simeq (Γ = Λ) $$
+
+include ../../../footer

@@ -1,36 +1,21 @@
-extends ../../../layout.pug
+include ../../../header
+
+html
+    head
+        meta(property='og:title'       content='PROP')
+        meta(property='og:description' content='Mere Proposition')
+        meta(property='og:url'         content='https://groupoid.space/foundations/univalent/prop/')
 
 block title
     title PROP
-    script(src='//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML')
-    script.
-     window.MathJax = { jax: ["input/TeX", "input/MathML", "input/AsciiMath", "output/CommonHTML", "output/NativeMML"],
-                             TeX: { extensions: ["AMSmath.js", "AMSsymbols.js", "autoload-all.js"] },
-                             extensions: ["tex2jax.js", "asciimath2jax.js", "mml2jax.js", "MathMenu.js", "MathZoom.js"],
-                             "HTML-CSS": { imageFont: null },
-                             AuthorInit: function() {
-                                 MathJax.Hub.Register.StartupHook("TeX AMSmath Ready", function() {
-                                     var TEX = MathJax.InputJax.TeX;
-                                     TEX.Definitions.Add({
-                                         macros: {
-                                           llparenthesis: ['Macro', '\\mathopen{\u2987}'],
-                                           rrparenthesis: ['Macro', '\\mathclose{\u2988}'],
-                                           llbracket:     ['Macro', '\\mathopen{\u27E6}'],
-                                           rrbracket:     ['Macro', '\\mathclose{\u27E7}'],
-                                         }
-                                     });
-                                 });
-                             },
-                             tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']],
-                                        processEscapes: true }
-                         };
 
 block content
     article.main
         .om
             section
-                h1 prop
-        aside <a href="..">Base Library</a>
+                h1 PROP
+
+        aside <a href="https://homotopy.dev/library/">Homotopy Library</a>
             time Published: 24 JUN 2018
         .om
             section
@@ -63,3 +48,6 @@ block content
                 h2 propSet
                 code.
                     propSet (A: U) (h: isProp A): isSet A
+
+include ../../../footer
+

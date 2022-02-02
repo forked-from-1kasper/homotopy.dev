@@ -1,13 +1,13 @@
-extends ../../../layout.pug
+include ../../../header
 
 block title
-    title functor
+    title FUNCTOR
 
 block content
     article.main.list
         section
             h1 functor
-            aside <a href="..">Base Library</a>
+            aside <a href="https://homotopy.dev/library/">Homotopy Library</a>
                 time Published: 5 NOV 2017
             p.
                 <a href="https://raw.githubusercontent.com/groupoid/cubical/master/src/functor.ctt">Functor package</a>
@@ -62,3 +62,6 @@ block content
                 functor_comptype (f g: FUNCTOR): FUNCTOR
                    = ((funcomp F G,fmap),(id,compose,tt)) where ...
             br.
+
+include ../../../footer
+

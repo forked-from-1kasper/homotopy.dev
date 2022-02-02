@@ -1,7 +1,10 @@
-link(rel='stylesheet' href='https://groupoid.space/main.css?v=50')
 
 footer.footer
     a(href='https://homotopy.dev/library/')
-        img.footer__logo(src='https://longchenpa.guru/seal.png',width=50)
-    span.footer__copy 2016&mdash;2022 &copy; <a href="https://5ht.co/" style="color:Lavender;">Namdak Tönpa</a>
-    script(src='https://groupoid.space/highlight.js?v=44')
+       img.footer__logo(src='https://longchenpa.guru/seal.png',width=50)
+    span.footer__copy 2016&mdash;2022 &copy; <a href="//5ht.co/" style="color:Lavender;">Namdak Tönpa</a>
+    if hopf
+        script(src='https://homotopy.dev/mathematics/homotopy/hopf/bundle.js')
+    else
+        script(src='https://homotopy.dev/bundle.js')
+    script(src='https://homotopy.dev/highlight.js')
