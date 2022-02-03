@@ -357,6 +357,17 @@ aside {
   max-width: 600px;
   flex-wrap: wrap;
   width: 100%; }
+  .macro__code {
+    margin-right: -200px;
+    padding-left: 24px;
+    line-height: 1.5;
+    font-size: 14px; }
+    .macro__code h3 {
+      padding: 0;
+      width: initial; }
+    @media (min-width: 768px) {
+      .macro__code {
+        font-size: 22px; } }
   .macro__col {
     padding-left: 24px;
     line-height: 1.5;
@@ -367,24 +378,6 @@ aside {
     @media (min-width: 768px) {
       .macro__col {
         font-size: 22px; } }
-
-@media (min-width: 920px) {
-  .langf {
-    display: flex;
-    flex-direction: row;
-    justify-content: center; } }
-
-.langf ol {
-  display: inline-block;
-  max-width: 650px;
-  margin: auto;
-  font-size: 20px;
-  padding-left: 36px; }
-
-@media (min-width: 920px) {
-  .langf__col .langf-col:last-child {
-    white-space: pre;
-    margin-left: 20px; } }
 
 .types {
   display: inline-block;

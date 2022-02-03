@@ -25,9 +25,9 @@ homotopy.dev/foundations/
 │   ├── pi/
 │   ├── sigma/
 │   └── vec/
-├── modal
+├── modal/
 │   └── infinitesimal/
-└── univalent
+└── univalent/
     ├── equiv/
     ├── extensionality/
     ├── iso/
@@ -83,6 +83,5 @@ Anders theorem prover [MLTT][CCHM][HTS][deRham] version 1.1.1
 
 ## Credits
 
-* Arseniy Bushyn
 * Maxim Sokhatsky
 * Siegmentation Fault

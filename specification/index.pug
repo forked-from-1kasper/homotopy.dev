@@ -1,0 +1,94 @@
+include ../header
+
+html
+    head
+        meta(property='og:title'       content='SPECIFICATION')
+        meta(property='og:description' content='Anders Speficiation')
+        meta(property='og:url'         content='https://homotopy.dev/specification/')
+
+block title
+    title SPECIFICATION
+
+block content
+    nav
+        <a href='https://homotopy.dev/'>HTS</a>
+        <a href='https://homotopy.dev/library/'>LIB</a>
+        <a href='https://homotopy.dev/specification/'>SPEC</a>
+    article.main
+        .exe
+            section
+                h1 SPECIFICATION
+            aside
+                time Published: 03 FEB 2022
+                p.
+                    Here is given a preliminary specification on Anders byte
+                    code assembler (external term format).
+            h2 COSMOS
+            p.
+                $$
+                    \begin{array}{llll} \mathrm{Byte} & \mathrm{} & \mathrm{Description} \\
+                         \hline
+                         \mathrm{0x01} & & \mathrm{Proof\ hole} \\
+                         \mathrm{0x02} & & \mathrm{Universe\ \mathcal{V}\ of\ pretypes} \\
+                         \mathrm{0x03} & & \mathrm{Fibrational\ \mathcal{U}\ universe\ of\ types} \\
+                         \mathrm{0x04} & & \mathrm{Variable} \\
+                    \end{array}
+                $$
+
+            h2 ΠΣ
+            p.
+                $$
+                    \begin{array}{llll} \mathrm{Byte} & \mathrm{} & \mathrm{Description} \\
+                         \hline
+                         \mathrm{0x10} & & \Pi\mathrm{-type} \\
+                         \mathrm{0x11} & & \lambda\mathrm{-function} \\
+                         \mathrm{0x12} & & \mathrm{Function\ application} \\
+                         \mathrm{0x13} & & \Sigma\mathrm{-type} \\
+                         \mathrm{0x14} & & \mathrm{Pair} \\
+                         \mathrm{0x15} & & \mathrm{Projection}\ \pi_1 \\
+                         \mathrm{0x16} & & \mathrm{Projection}\ \pi_2 \\
+                         \mathrm{0x17} & & \mathrm{Field} \\
+                    \end{array}
+                $$
+
+            h2 INTERVAL
+            p.
+                $$
+                    \begin{array}{llll} \mathrm{Byte} & \mathrm{} & \mathrm{Description} \\
+                         \hline
+                         \mathrm{0x20} & & \mathrm{Id-type} \\
+                         \mathrm{0x21} & & \mathrm{Id\ reflection\ introduction} \\
+                         \mathrm{0x22} & & \mathrm{J\ eliminator} \\
+                         \mathrm{0x23} & & \mathrm{PathP}\mathrm{-type} \\
+                         \mathrm{0x24} & & \mathrm{Path}\ \lambda\mathrm{-function} \\
+                         \mathrm{0x25} & & \mathrm{Path\ application\ formula} \\
+                         \mathrm{0x26} & & \mathrm{Explicit\ interval} \\
+                         \mathrm{0x27} & & \mathrm{Direction\ 0} \\
+                         \mathrm{0x28} & & \mathrm{Direction\ 1} \\
+                         \mathrm{0x29} & & \mathrm{And} \\
+                         \mathrm{0x2A} & & \mathrm{Or} \\
+                         \mathrm{0x2B} & & \mathrm{Negation} \\
+                    \end{array}
+                $$
+
+            h2 KAN
+            p.
+                $$
+                    \begin{array}{llll} \mathrm{Byte} & \mathrm{} & \mathrm{Description} \\
+                         \hline
+                         \mathrm{0x30} & & \mathrm{Generalized\ transport} \\
+                         \mathrm{0x31} & & \mathrm{Homogeneous\ composition} \\
+                         \mathrm{0x32} & & \mathrm{Partial}\mathrm{-type} \\
+                         \mathrm{0x33} & & \mathrm{PartialP}\mathrm{-type} \\
+                         \mathrm{0x34} & & \mathrm{Cubical\ system} \\
+                         \mathrm{0x35} & & \mathrm{Cubical\ subsystem} \\
+                         \mathrm{0x36} & & \mathrm{Inc} \\
+                         \mathrm{0x37} & & \mathrm{Ouc} \\
+                         \mathrm{0x38} & & \mathrm{Glue}\mathrm{-type} \\
+                         \mathrm{0x39} & & \mathrm{Glue\ eliminator} \\
+                         \mathrm{0x3A} & & \mathrm{Unglue} \\
+                    \end{array}
+                $$
+
+
+include ../footer
