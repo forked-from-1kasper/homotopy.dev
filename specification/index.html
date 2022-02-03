@@ -26,58 +26,58 @@
 <a href='https://homotopy.dev/library/'>LIB</a>
 <a href='https://homotopy.dev/specification/'>SPEC</a></nav><article class="main"><div class="exe"><section><h1>ANDERS FORMAT</h1></section><aside><time>Published: 03 FEB 2022</time><p>Here is given a preliminary specification on Anders byte
 code assembler (external term format).</p></aside><h2>COSMOS</h2><p>$$
-    \begin{array}{llll} \mathrm{Byte} & \mathrm{} & \mathrm{Description} \\
+    \begin{array}{llll} \mathrm{Head} & \mathrm{Tail} & \mathrm{Description} \\
          \hline
-         \mathrm{0x01} & & \mathrm{Proof\ hole} \\
-         \mathrm{0x02} & & \mathrm{Universe\ \mathcal{V}\ of\ pretypes} \\
-         \mathrm{0x03} & & \mathrm{Fibrational\ \mathcal{U}\ universe\ of\ types} \\
-         \mathrm{0x04} & & \mathrm{Variable} \\
+         \texttt{01}_{16} & [] & \mathrm{Proof\ hole} \\
+         \texttt{02}_{16} & [ℕ] & \mathrm{Universe\ \mathcal{V}\ of\ pretypes} \\
+         \texttt{03}_{16} & [ℕ] & \mathrm{Fibrational\ \mathcal{U}\ universe\ of\ types} \\
+         \texttt{04}_{16} & [\mathrm{List}_ℕ] & \mathrm{Variable} \\
     \end{array}
 $$
 </p><h2>ΠΣ</h2><p>$$
-    \begin{array}{llll} \mathrm{Byte} & \mathrm{} & \mathrm{Description} \\
+    \begin{array}{llll} \mathrm{Head} & \mathrm{Tail} & \mathrm{Description} \\
          \hline
-         \mathrm{0x10} & & \Pi\mathrm{-type} \\
-         \mathrm{0x11} & & \lambda\mathrm{-function} \\
-         \mathrm{0x12} & & \mathrm{Function\ application} \\
-         \mathrm{0x13} & & \Sigma\mathrm{-type} \\
-         \mathrm{0x14} & & \mathrm{Pair} \\
-         \mathrm{0x15} & & \mathrm{Projection}\ \pi_1 \\
-         \mathrm{0x16} & & \mathrm{Projection}\ \pi_2 \\
-         \mathrm{0x17} & & \mathrm{Field} \\
+         \texttt{10}_{16} & [\mathrm{Idx},E,\mathrm{Ident},E] & \Pi\mathrm{-type} \\
+         \texttt{11}_{16} & [\mathrm{Idx},E,\mathrm{Ident},E] & \lambda\mathrm{-function} \\
+         \texttt{12}_{16} & [E,E] & \mathrm{Function\ application} \\
+         \texttt{13}_{16} & [\mathrm{Idx},E,\mathrm{Ident},E] & \Sigma\mathrm{-type} \\
+         \texttt{14}_{16} & [E,E] & \mathrm{Pair} \\
+         \texttt{15}_{16} & [E] & \mathrm{Projection}\ \pi_1 \\
+         \texttt{16}_{16} & [E] & \mathrm{Projection}\ \pi_2 \\
+         \texttt{17}_{16} & [E,\mathrm{List}_ℕ] & \mathrm{Field} \\
     \end{array}
 $$
 </p><h2>INTERVAL</h2><p>$$
-    \begin{array}{llll} \mathrm{Byte} & \mathrm{} & \mathrm{Description} \\
+    \begin{array}{llll} \mathrm{Head} & \mathrm{Tail} & \mathrm{Description} \\
          \hline
-         \mathrm{0x20} & & \mathrm{Id-type} \\
-         \mathrm{0x21} & & \mathrm{Id\ reflection\ introduction} \\
-         \mathrm{0x22} & & \mathrm{J\ eliminator} \\
-         \mathrm{0x23} & & \mathrm{PathP}\mathrm{-type} \\
-         \mathrm{0x24} & & \mathrm{Path}\ \lambda\mathrm{-function} \\
-         \mathrm{0x25} & & \mathrm{Path\ application\ formula} \\
-         \mathrm{0x26} & & \mathrm{Explicit\ interval} \\
-         \mathrm{0x27} & & \mathrm{Direction\ 0} \\
-         \mathrm{0x28} & & \mathrm{Direction\ 1} \\
-         \mathrm{0x29} & & \mathrm{And} \\
-         \mathrm{0x2A} & & \mathrm{Or} \\
-         \mathrm{0x2B} & & \mathrm{Negation} \\
+         \texttt{20}_{16} & [E] & \mathrm{Id-type} \\
+         \texttt{21}_{16} & [E] & \mathrm{Id\ reflection\ introduction} \\
+         \texttt{22}_{16} & [E] & \mathrm{J\ eliminator} \\
+         \texttt{23}_{16} & [E] & \mathrm{PathP}\mathrm{-type} \\
+         \texttt{24}_{16} & [E] & \mathrm{Path}\ \lambda\mathrm{-function} \\
+         \texttt{25}_{16} & [E,I] & \mathrm{Path\ application\ formula} \\
+         \texttt{26}_{16} & [] & \mathrm{Explicit\ interval} \\
+         \texttt{27}_{16} & [] & \mathrm{Direction\ 0} \\
+         \texttt{28}_{16} & [] & \mathrm{Direction\ 1} \\
+         \texttt{29}_{16} & [E,E] & \mathrm{And} \\
+         \texttt{2A}_{16} & [E,E] & \mathrm{Or} \\
+         \texttt{2B}_{16} & [E] & \mathrm{Negation} \\
     \end{array}
 $$
 </p><h2>KAN</h2><p>$$
-    \begin{array}{llll} \mathrm{Byte} & \mathrm{} & \mathrm{Description} \\
+    \begin{array}{llll} \mathrm{Head} & \mathrm{Tail} & \mathrm{Description} \\
          \hline
-         \mathrm{0x30} & & \mathrm{Generalized\ transport} \\
-         \mathrm{0x31} & & \mathrm{Homogeneous\ composition} \\
-         \mathrm{0x32} & & \mathrm{Partial}\mathrm{-type} \\
-         \mathrm{0x33} & & \mathrm{PartialP}\mathrm{-type} \\
-         \mathrm{0x34} & & \mathrm{Cubical\ system} \\
-         \mathrm{0x35} & & \mathrm{Cubical\ subsystem} \\
-         \mathrm{0x36} & & \mathrm{Inc} \\
-         \mathrm{0x37} & & \mathrm{Ouc} \\
-         \mathrm{0x38} & & \mathrm{Glue}\mathrm{-type} \\
-         \mathrm{0x39} & & \mathrm{Glue\ eliminator} \\
-         \mathrm{0x3A} & & \mathrm{Unglue} \\
+         \mathrm{0x30} & [P,E] & \mathrm{Generalized\ transport} \\
+         \mathrm{0x31} & [E,E,E,E] & \mathrm{Homogeneous\ composition} \\
+         \mathrm{0x32} & [E] & \mathrm{Partial}\mathrm{-type} \\
+         \mathrm{0x33} & [U,E] & \mathrm{PartialP}\mathrm{-type} \\
+         \mathrm{0x34} & [E,\mathrm{System}] & \mathrm{Cubical\ system} \\
+         \mathrm{0x35} & [E,E,E] & \mathrm{Cubical\ subsystem} \\
+         \mathrm{0x36} & [E,E] & \mathrm{Inc} \\
+         \mathrm{0x37} & [E] & \mathrm{Ouc} \\
+         \mathrm{0x38} & [E] & \mathrm{Glue}\mathrm{-type} \\
+         \mathrm{0x39} & [E,E,E] & \mathrm{Glue\ eliminator} \\
+         \mathrm{0x3A} & [E,E,E] & \mathrm{Unglue} \\
     \end{array}
 $$
 
