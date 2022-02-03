@@ -23,7 +23,7 @@
                             processEscapes: true }
              };
 </script></head><body class="content"></body></html><html><head><meta property="og:title" content="HOMOTOPY"><meta property="og:description" content="Modal Homotopy Type System"><meta property="og:url" content="https://homotopy.dev/"></head></html><title>HOMOTOPY</title><nav><a href='https://homotopy.dev/'>HTS</a>
-<a href='https://homotopy.dev/library/'>LIB</a></nav><article class="main"><div class="exe"><section><h1>HOMOTOPY TYPE SYSTEM</h1></section><aside><time>Published: 4 JUL 2021</time><p>Anders is a Modal HoTT theorem prover based on: classical <a href="https://raw.githubusercontent.com/michaelt/martin-lof/master/pdfs/Bibliopolis-Book-retypeset-1984.pdf">MLTT-80</a> [14] with 0, 1, 2, W types;
+<a href='https://homotopy.dev/library/'>LIB</a></nav><article class="main"><div class="exe"><section><h1>HOMOTOPY TYPE SYSTEM</h1></section><aside><time>Published: 4 JUL 2021</time><p>Anders is a Modal HoTT proof assistant based on: classical <a href="https://raw.githubusercontent.com/michaelt/martin-lof/master/pdfs/Bibliopolis-Book-retypeset-1984.pdf">MLTT-80</a> [14] with 0, 1, 2, W types;
 <a href="https://arxiv.org/pdf/1611.02108.pdf">CCHM</a> [4] in CHM flavour as cubical type system with hcomp/transp Kan operations;
 HTS strict equality on pretypes; <a href="https://arxiv.org/pdf/1806.05966.pdf">de Rham</a> [19]  stack modality primitives.
 We tend not to touch general recursive higher inductive schemes yet,
@@ -41,7 +41,7 @@ with <b>CHM</b>-style [5] primitives.</p><p>You may try it from Github: <a href=
 install through OPAM:
 </p><code>$ opam install anders</code><p>Main commands are <b>check</b> (to check a program) and <b>repl</b> (to enter the proof shell).
 </p><code>$ anders repl
-Anders theorem prover [MLTT][CCHM][HTS][deRham] version 1.1.1
+Anders proof assisant [MLTT][CCHM][HTS][deRham] version 1.1.1
 
   invocation = anders | anders list
         list = [] | command list
@@ -57,7 +57,7 @@ Lean-compatible syntax to fit 200 LOC in Menhir, the <b>MLTT</b> core
 is 800 LOC and <b>CCHM</b> [4] pretypes is another 800 LOC.
 It compiles under 10 seconds and
 checks all the base library under 1 second [Haswell, 2013].
-<b>Anders</b> theorem prover as Homotopy System comes with its
+<b>Anders</b> proof assistant as Homotopy System comes with its
 own <a href="library/">Homotopy Library</a>.
 </p></section><section><h1>SYNTAX</h1><p>The syntax resembles original syntax of the reference <b>CCHM</b> type checker
 <b>cubicaltt</b>, is slightly compatible with <b>Lean</b> syntax
