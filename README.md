@@ -77,7 +77,7 @@ The main purpose of Anders is doing Homotopy Theory:
 ```
 $ opam install anders
 $ anders repl
-Anders theorem prover [MLTT][CCHM][HTS][deRham] version 1.1.1
+Anders MLTT][CCHM][HTS][deRham] proof assistant version 1.1.1
 >
 ```
 
