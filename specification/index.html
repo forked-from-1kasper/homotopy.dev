@@ -24,59 +24,69 @@
              };
 </script></head><body class="content"></body></html><html><head><meta property="og:title" content="SPECIFICATION"><meta property="og:description" content="Binary Format"><meta property="og:url" content="https://homotopy.dev/specification/"></head></html><title>SPECIFICATION</title><nav><a href='https://homotopy.dev/'>HTS</a>
 <a href='https://homotopy.dev/library/'>LIB</a>
-<a href='https://homotopy.dev/specification/'>SPEC</a></nav><article class="main"><div class="exe"><section><h1>BINARY FORMAT</h1></section><aside><time>Published: 03 FEB 2022</time><p>Here is given a preliminary specification on Anders external binary term format.</p></aside><h2>COSMOS</h2><p>$$
+<a href='https://homotopy.dev/specification/'>SPEC</a></nav><article class="main"><div class="exe"><section><h1>BINARY FORMAT</h1></section><aside><time>Published: 03 FEB 2022</time><p>Here is given a preliminary specification on Anders external term format.</p><p>$ \mathrm{C} $ is a byte. <br>
+$ \mathrm{Q} $ (from <b>q</b>word) is a 64-bit little-endian integer constisting of 4 bytes. <br>
+$ \mathrm{B} $ is a UTF-8 string encoded as its length followed by the string itself.
+  In a BNF-like notation this written as $ \mathrm{B} := \mathrm{Q}^n\ \underbrace{\mathrm{C}\ \mathrm{C}\ \ldots\ \mathrm{C}}_{n\ \text{times}} $ <br>
+$ \mathbb{Z} $ represents here string (given by <samp>Z.to_bits</samp> function) that encodes <a href="https://github.com/ocaml/Zarith">Zarith</a> integer. <br>
+$ \mathrm{I} := \texttt{00}_{16}\ |\ \texttt{FF}_{16}\ \mathrm{B}\ \mathrm{Q} $ is a ident,
+  where first part represents ignored variable (like in $ \lambda a. \lambda \_. a $). <br>
+$ \mathrm{D} := \texttt{00}_{16}\ |\ \texttt{FF}_{16} $ represents interval elements ($ 0 $ and $ 1 $ respectively). <br>
+$ \mathbb{F} := \mathrm{Q}^n\ \underbrace{(\mathrm{I}\ \mathrm{D})\ \ldots\ (\mathrm{I}\ \mathrm{D})}_{n\ \text{times}} $ is a face. <br>
+$ \mathrm{E} $ is a language expression. <br>
+$ \mathrm{S} := \mathrm{Q}^n\ \underbrace{(\mathbb{F}\ \mathrm{E})\ \ldots\ (\mathbb{F}\ \mathrm{E})}_{n\ \text{times}} $ is a cubical system.</p></aside><h2>COSMOS</h2><p>$$
     \begin{array}{llll} \mathrm{Head} & \mathrm{Tail} & \mathrm{Instruction} \\
          \hline
          \texttt{01}_{16} & [] & \mathrm{Proof\ hole} \\
-         \texttt{02}_{16} & [ℕ] & \mathrm{Universe\ \mathcal{V}\ of\ pretypes} \\
-         \texttt{03}_{16} & [ℕ] & \mathrm{Fibrational\ \mathcal{U}\ universe\ of\ types} \\
-         \texttt{04}_{16} & [\mathrm{List}_ℕ] & \mathrm{Variable} \\
+         \texttt{02}_{16} & [\mathbb{Z}] & \text{Universe}\ \mathcal{V}\ \text{of pretypes} \\
+         \texttt{03}_{16} & [\mathbb{Z}] & \text{Fibrant}\ \mathcal{U}\ \text{universe of types} \\
+         \texttt{04}_{16} & [\mathrm{I}] & \text{Variable} \\
     \end{array}
 $$
 </p><h2>ΠΣ</h2><p>$$
     \begin{array}{llll} \mathrm{Head} & \mathrm{Tail} & \mathrm{Instruction} \\
          \hline
-         \texttt{10}_{16} & [ℕ,E,\mathrm{List}_ℕ,E] & \Pi\mathrm{-type} \\
-         \texttt{11}_{16} & [ℕ,E,\mathrm{List}_ℕ,E] & \lambda\mathrm{-function} \\
-         \texttt{12}_{16} & [E,E] & \mathrm{Function\ application} \\
-         \texttt{13}_{16} & [ℕ,E,\mathrm{List}_ℕ,E] & \Sigma\mathrm{-type} \\
-         \texttt{14}_{16} & [E,E] & \mathrm{Pair} \\
-         \texttt{15}_{16} & [E] & \mathrm{Projection}\ \pi_1 \\
-         \texttt{16}_{16} & [E] & \mathrm{Projection}\ \pi_2 \\
-         \texttt{17}_{16} & [E,\mathrm{List}_ℕ] & \mathrm{Field} \\
+         \texttt{10}_{16} & [\mathrm{E}, \mathrm{I}, \mathrm{E}] & \Pi\text{-type} \\
+         \texttt{11}_{16} & [\mathrm{E}, \mathrm{I}, \mathrm{E}] & \lambda\text{-function} \\
+         \texttt{12}_{16} & [\mathrm{E}, \mathrm{E}] & \text{Function application} \\
+         \texttt{13}_{16} & [\mathrm{E}, \mathrm{I}, \mathrm{E}] & \Sigma\text{-type} \\
+         \texttt{14}_{16} & [\mathrm{E}, \mathrm{E}] & \text{Pair} \\
+         \texttt{15}_{16} & [\mathrm{E}] & \text{Projection}\ \pi_1 \\
+         \texttt{16}_{16} & [\mathrm{E}] & \text{Projection}\ \pi_2 \\
+         \texttt{17}_{16} & [\mathrm{E}, \mathrm{B}] & \text{Field} \\
     \end{array}
 $$
 </p><h2>INTERVAL</h2><p>$$
     \begin{array}{llll} \mathrm{Head} & \mathrm{Tail} & \mathrm{Instruction} \\
          \hline
-         \texttt{20}_{16} & [E] & \mathrm{Id-type} \\
-         \texttt{21}_{16} & [E] & \mathrm{Id\ reflection\ introduction} \\
-         \texttt{22}_{16} & [E] & \mathrm{J\ eliminator} \\
-         \texttt{23}_{16} & [E] & \mathrm{PathP}\mathrm{-type} \\
-         \texttt{24}_{16} & [E] & \mathrm{Path}\ \lambda\mathrm{-function} \\
-         \texttt{25}_{16} & [E,E] & \mathrm{Path\ application\ formula} \\
-         \texttt{26}_{16} & [] & \mathrm{Explicit\ interval} \\
-         \texttt{27}_{16} & [] & \mathrm{Direction\ 0} \\
-         \texttt{28}_{16} & [] & \mathrm{Direction\ 1} \\
-         \texttt{29}_{16} & [E,E] & \mathrm{And} \\
-         \texttt{2A}_{16} & [E,E] & \mathrm{Or} \\
-         \texttt{2B}_{16} & [E] & \mathrm{Negation} \\
+         \texttt{20}_{16} & [\mathrm{E}] & \text{Id-type} \\
+         \texttt{21}_{16} & [\mathrm{E}] & \text{Id reflection introduction} \\
+         \texttt{22}_{16} & [\mathrm{E}] & \text{J eliminator} \\
+         \texttt{23}_{16} & [\mathrm{E}] & \text{PathP}\text{-type} \\
+         \texttt{24}_{16} & [\mathrm{E}] & \text{Path}\ \lambda\text{-function} \\
+         \texttt{25}_{16} & [\mathrm{E}, \mathrm{E}] & \text{Path application formula} \\
+         \texttt{26}_{16} & [] & \text{Explicit interval} \\
+         \texttt{27}_{16} & [] & \text{Direction 0} \\
+         \texttt{28}_{16} & [] & \text{Direction 1} \\
+         \texttt{29}_{16} & [\mathrm{E}, \mathrm{E}] & \text{And} \\
+         \texttt{2A}_{16} & [\mathrm{E}, \mathrm{E}] & \text{Or} \\
+         \texttt{2B}_{16} & [\mathrm{E}] & \text{Negation} \\
     \end{array}
 $$
 </p><h2>KAN</h2><p>$$
     \begin{array}{llll} \mathrm{Head} & \mathrm{Tail} & \mathrm{Instruction} \\
          \hline
-         \texttt{30}_{16} & [E,E] & \mathrm{Generalized\ transport} \\
-         \texttt{31}_{16} & [E,E,E,E] & \mathrm{Homogeneous\ composition} \\
-         \texttt{32}_{16} & [E] & \mathrm{Partial}\mathrm{-type} \\
-         \texttt{33}_{16} & [E,E] & \mathrm{PartialP}\mathrm{-type} \\
-         \texttt{34}_{16} & [E,E] & \mathrm{Cubical\ system} \\
-         \texttt{35}_{16} & [E,E,E] & \mathrm{Cubical\ subsystem} \\
-         \texttt{36}_{16} & [E,E] & \mathrm{Inc} \\
-         \texttt{37}_{16} & [E] & \mathrm{Ouc} \\
-         \texttt{38}_{16} & [E] & \mathrm{Glue}\mathrm{-type} \\
-         \texttt{39}_{16} & [E,E,E] & \mathrm{Glue\ eliminator} \\
-         \texttt{3A}_{16} & [E,E,E] & \mathrm{Unglue} \\
+         \texttt{30}_{16} & [\mathrm{E}, \mathrm{E}] & \text{Generalized transport} \\
+         \texttt{31}_{16} & [\mathrm{E}, \mathrm{E}, \mathrm{E}, \mathrm{E}] & \text{Homogeneous composition} \\
+         \texttt{32}_{16} & [\mathrm{E}] & \text{Partial-type} \\
+         \texttt{33}_{16} & [\mathrm{E}, \mathrm{E}] & \text{PartialP-type} \\
+         \texttt{34}_{16} & [\mathrm{S}] & \text{Cubical system} \\
+         \texttt{35}_{16} & [\mathrm{E}, \mathrm{E}, \mathrm{E}] & \text{Cubical subtype} \\
+         \texttt{36}_{16} & [\mathrm{E}, \mathrm{E}] & \text{Inc} \\
+         \texttt{37}_{16} & [\mathrm{E}] & \text{Ouc} \\
+         \texttt{38}_{16} & [\mathrm{E}] & \text{Glue-type} \\
+         \texttt{39}_{16} & [\mathrm{E}, \mathrm{E}, \mathrm{E}] & \text{Glue constructor} \\
+         \texttt{3A}_{16} & [\mathrm{E}, \mathrm{E}, \mathrm{E}] & \text{Unglue} \\
     \end{array}
 $$
 
