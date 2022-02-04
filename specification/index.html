@@ -24,7 +24,7 @@
              };
 </script></head><body class="content"></body></html><html><head><meta property="og:title" content="SPECIFICATION"><meta property="og:description" content="Binary Format"><meta property="og:url" content="https://homotopy.dev/specification/"></head></html><title>SPECIFICATION</title><nav><a href='https://homotopy.dev/'>HTS</a>
 <a href='https://homotopy.dev/library/'>LIB</a>
-<a href='https://homotopy.dev/specification/'>SPEC</a></nav><article class="main"><div class="exe"><section><h1>BINARY FORMAT</h1></section><aside><time>Published: 03 FEB 2022</time><p>Here is given a preliminary specification on Anders external term format.</p><p>$ \mathrm{C} $ is a byte. <br>
+<a href='https://homotopy.dev/spec/'>SPEC</a></nav><article class="main"><div class="exe"><section><h1>BINARY FORMAT</h1></section><aside><time>Published: 03 FEB 2022</time><p>Here is given a preliminary specification on Anders external term format.</p><p>$ \mathrm{C} $ is a byte. <br>
 $ \mathrm{Q} $ (from <b>q</b>word) is a 64-bit little-endian integer constisting of 4 bytes. <br>
 $ \mathrm{B} $ is a UTF-8 string encoded as its length followed by the string itself.
   In a BNF-like notation this written as $ \mathrm{B} := \mathrm{Q}^n\ \underbrace{\mathrm{C}\ \mathrm{C}\ \ldots\ \mathrm{C}}_{n\ \text{times}} $ <br>
