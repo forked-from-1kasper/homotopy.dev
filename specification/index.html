@@ -28,7 +28,7 @@
 $ \mathrm{Q} $ (from <b>q</b>word) is a 64-bit little-endian integer constisting of 4 bytes. <br>
 $ \mathrm{B} $ is a UTF-8 string encoded as its length followed by the string itself.
   In a BNF-like notation this written as $ \mathrm{B} := \mathrm{Q}^n\ \underbrace{\mathrm{C}\ \mathrm{C}\ \ldots\ \mathrm{C}}_{n\ \text{times}} $ <br>
-$ \mathbb{Z} $ represents here string (given by Z.to_bits function) that encodes Zarith integer. <br>
+$ \mathbb{Z} $ represents here string (given by <samp>Z.to_bits</samp> function) that encodes <a href="https://github.com/ocaml/Zarith">Zarith</a> integer. <br>
 $ \mathrm{I} := \texttt{00}_{16}\ |\ \texttt{FF}_{16}\ \mathrm{B}\ \mathrm{Q} $ is a ident,
   where first part represents ignored variable (like in $ \lambda a. \lambda \_. a $). <br>
 $ \mathrm{D} := \texttt{00}_{16}\ |\ \texttt{FF}_{16} $ represents interval elements ($ 0 $ and $ 1 $ respectively). <br>
