@@ -66,7 +66,7 @@ homotopy.dev/mathematics/
 │   ├── quotient/
 │   ├── suspension/
 │   └── truncation/
-── topoi/
+└── topoi/
     └── topos/
 ```
 
