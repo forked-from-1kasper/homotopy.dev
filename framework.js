@@ -36,6 +36,6 @@ exports.highlight = function (block) {
     return renderPug(block)
         .replace(/([(){}→=]+|:|:=)/g,
             '<span class="h__symbol">$1</span>')
-        .replace(/\b(data|transp|∀|Π|Σ|λ|glue|unglue|Glue|Anders|prover|MLTT|PTS|CCHM|HTS|deRham|hcomp|where|def|mutual|begin|end|module|import|option|false|true|indᵂ|sup|.1|.2|Σ|Π|Pi|Sigma|W|𝟎|𝟏|𝟐|ind₂|ind₁|ind₀|★|0₂|1₂|Path|PathP|Type|Prop|inductive|record|forall|fun|match|let|axiom|theorem|lemma|in|U|S|V)\b(?!:)/g,
+        .replace(/\b(∀|Π|Σ|W|λ|glue|unglue|Glue|transp|hcomp|where|def|begin|end|module|import|option|false|true|indᵂ|sup|.1|.2|𝟎|𝟏|𝟐|ind₂|ind₁|ind₀|★|0₂|1₂|PathP|PartialP|inc|ouc|axiom|theorem|lemma|U|V)\b(?!:)/g,
             '<span class="h__keyword">$1</span>');
 }
