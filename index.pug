@@ -20,8 +20,8 @@ block content
                 h1 HOMOTOPY TYPE SYSTEM
             aside
                 time Published: 4 JUL 2021
-                p.
-                    <b>Anders</b> is a Modal HoTT proof assistant based on: classical <a href="https://raw.githubusercontent.com/michaelt/martin-lof/master/pdfs/Bibliopolis-Book-retypeset-1984.pdf">MLTT-80</a> [14] with 0, 1, 2, W types;
+                +tex.
+                    $\mathbf{Anders}$ is a Modal HoTT proof assistant based on: classical <a href="https://raw.githubusercontent.com/michaelt/martin-lof/master/pdfs/Bibliopolis-Book-retypeset-1984.pdf">MLTT-80</a> [14] with 0, 1, 2, W types;
                     <a href="https://arxiv.org/pdf/1611.02108.pdf">CCHM</a> [4] in CHM flavour as cubical type system with hcomp/transp Kan operations;
                     HTS strict equality on pretypes; <a href="https://arxiv.org/pdf/1806.05966.pdf">de Rham</a> [19]  stack modality primitives.
                     We tend not to touch general recursive higher inductive schemes yet,
@@ -100,12 +100,11 @@ block content
                 br.
                 p.
                     <b>Anders</b> is fast, idiomatic and educational. We carefully draw the favourite
-                    Lean-compatible syntax to fit 200 LOC in Menhir, the <b>MLTT</b> core
-                    is 800 LOC and <b>CCHM</b> [4] pretypes is another 800 LOC.
-                    It compiles under 10 seconds and
-                    checks all the base library under 1 second [Haswell, 2013].
-                    <b>Anders</b> proof assistant as Homotopy System comes with its
-                    own <a href="library/">Homotopy Library</a>.
+                    Lean-compatible syntax to fit 200 LOC in Menhir.
+                    The CHM kernel is 1K LOC. Whole Anders compiles under 2 seconds
+                    and checks all the base library under 1 second [i7-8700].
+                    <b>Anders</b> proof assistant as Homotopy Type System comes
+                    with its own <a href="library/">Homotopy Library</a>.
 
             section
                 h1 SYNTAX
@@ -114,18 +113,20 @@ block content
                     <b>cubicaltt</b>, is slightly compatible with <b>Lean</b> syntax
                     and contains the full set of <b>Cubical&nbsp;Agda</b> [10]
                     primitives (except generic higher inductive schemes).
-                p.
+
+                +tex.
                     Here is given the mathematical pseudo-code notation
                     of the language expressions that come immediately after parsing.
                     The core syntax definition of <b>HTS</b> language $E$ corresponds
                     to <b>exp</b> type defined in <b>expr.ml</b> OCaml module:
-                p.
+
+                +tex.
                     $$
+                    \begin{array}{c} \\
                        E := cosmos\ |\ var\ |\ MLTT\ |\ CCHM\ |\ deRham \\
                        CCHM := path\ |\ I\ |\ part\ |\ sub\ |\ kan\ |\ glue \\
                        MLTT := pi\ |\ sigma\ |\ id\ |\ 0\ |\ 1\ |\ 2\ |\ W \\
-                    $$
-                    $$
+                       \\
                        cosmos := \mathbf{U}_j \ |\ \mathbf{V}_k \\
                        var := \mathbf{var}\ name\ |\ \mathbf{hole} \\
                        pi := \Pi\ name\ E\ E\ |\ \lambda\ name\ E\ E\ |\ E\ E \\
@@ -142,14 +143,13 @@ block content
                        kan := \mathbf{transp}\ E\ E\ |\ \mathbf{hcomp}\ E \\
                        glue := \mathbf{Glue}\ E\ |\ \mathbf{glue}\ E\ |\ \mathbf{unglue}\ E\ E \\
                        deRham := \mathbf{Im}\ E\ |\ \mathbf{Inf}\ E\ |\ \mathbf{Join}\ E\ |\ \mathbf{ind_{Im}}\ E\ E \\
-                    $$
-                    $$
+                    \end{array}
                     $$
                 p.
                     Further Menhir BNF notation will be used to describe the top-level language parser
                     as type checker is written in OCaml.
-                p.
-                    <b>Keywords</b>.
+                +tex.
+                    $\mathbf{Keywords}$.
                     The words of a top-level language (file or repl) consist of keywords or identifiers.
                     The keywords are following: <b>module</b>, <b>where</b>, <b>import</b>, <b>option</b>,
                     <b>def</b>, <b>axiom</b>, <b>postulate</b>, <b>theorem</b>, <b>(</b>, <b>)</b>,
@@ -159,21 +159,21 @@ block content
                     <b>hcomp</b>, <b>zero</b>, <b>one</b>, <b>Partial</b>, <b>inc</b>, <b>ouc</b>,
                     <b>interval</b>, <b>W</b>, <b>sup</b>, <b>Glue</b>, <b>glue</b>, <b>unglue</b>, <b>ind$_0$</b>,
                     <b>ind$_1$</b>, <b>ind$_2$</b>, <b>ind$_W$</b>.
-                p.
-                    <b>Indentifiers</b>. Identifiers support UTF-8. Indentifiers couldn't start
+                +tex.
+                    $\mathbf{Indentifiers}$. Identifiers support UTF-8. Indentifiers couldn't start
                     with <b>:</b>, <b>-</b>, <b>→</b>. Sample identifiers:
                 code.
                     ¬-of-∨, 1=1, is-?, =, $^~]!005x, ∞, x→Nat, f'
                 br.
-                p.
-                    <b>Modules</b>. Modules represent files with declarations. More accurate,
+                +tex.
+                    $\mathbf{Modules}$. Modules represent files with declarations. More accurate,
                     BNF notation of module consists of imports, options and declarations.
-                p.
-                    <b>Imports</b>. The import construction supports file folder
+                +tex.
+                    $\mathbf{Imports}$. The import construction supports file folder
                     structure (without file extensions) by using reserved symbol <b>&#47;</b>
                     for hierarchy walking.
-                p.
-                    <b>Options</b>. Each option holds bool value. Language supports following options:
+                +tex.
+                    $\mathbf{Options}$. Each option holds bool value. Language supports following options:
                     1) <b>girard</b> (enables U : U);
                     2) <b>pre-eval</b> (normalization cache);
                     3) <b>impredicative</b> (infinite hierarchy with impredicativity rule);
@@ -195,8 +195,8 @@ block content
                     Here is the example how to setup minimal core able to prove
                     internalization of <b>MLTT-73</b> variation (<b>Path</b>
                     instead of <b>Id</b> and no inductive types, see base library):
-                p.
-                    <b>Declarations</b>. Language supports following top level declarations:
+                +tex.
+                    $\mathbf{Declarations}$. Language supports following top level declarations:
                     1) <b>axiom</b> (non-computable declaration that breakes normalization);
                     2) <b>postulate</b> (alternative or inverted axiom that can preserve consistency);
                     3) <b>definition</b> (almost any explicit term or type in type theory);
@@ -228,8 +228,8 @@ block content
                     Each lense provides a set of variables of the same type. Telescope
                     defines parameters of a declaration. Types in a telescope,
                     type of a declaration and a proof-terms are a language expressions <b>exp1</b>.
-                p.
-                    <b>Expressions</b>. All atomic language expressions are grouped
+                +tex.
+                    $\mathbf{Expressions}$. All atomic language expressions are grouped
                     by four categories:
                     <b>exp0</b> (pair constructions),
                     <b>exp1</b> (non neutral constructions),
@@ -315,13 +315,13 @@ block content
                 br.
 
                 h2#univ Universe Hierarchies
-                p.
+                +tex.
                     Language supports Agda-style hierarchy of universes: fibrant (U) and pretypes (V).
                     All universes are bounded with preorder
                     $$
                        Fibrant_i \prec Pretypes_j,
                     $$
-                p.
+                +tex.
                     in which $i$ and $j$ are bounded with equation:
                     $$
                        i < j.
@@ -339,20 +339,20 @@ block content
                 br.
 
                 h2 Dependent Types
-                p.
-                    <b>Definition</b> (Type).
+                +tex.
+                    $\mathbf{Definition}$ (Type).
                     A type is interpreted as a presheaf $A$, a family of sets $A_I$ with restriction maps
                     $u \mapsto u\ f, A_I \rightarrow A_J$ for $f: J\rightarrow I$. A dependent type
                     B on A is interpreted by a presheaf on category of elements of $A$: the objects
                     are pairs $(I,u)$ with $u : A_I$ and morphisms $f: (J,v) \rightarrow (I,u)$ are
                     maps $f : J \rightarrow$ such that $v = u\ f$. A dependent type B is thus given
                     by a family of sets $B(I,u)$ and restriction maps $B(I,u) \rightarrow B(J,u\ f)$.
-                p.
+                +tex.
                     We think of $A$ as a type and $B$ as a family of presheves $B(x)$ varying $x:A$.
                     The operation $\Pi(x:A)B(x)$ generalizes the semantics of
                     implication in a Kripke model.
-                p#pi
-                    <b>Defintion</b> (Pi). An element $w:[\Pi(x:A)B(x)](I)$ is a family
+                +tex.
+                    $\mathbf{Definition}$ (Pi). An element $w:[\Pi(x:A)B(x)](I)$ is a family
                     of functions $w_f : \Pi(u:A(J))B(J,u)$ for $f : J \rightarrow I$ such
                     that $(w_f u)g=w_{f\ g}(u\ g)$ when $u:A(J)$ and $g:K\rightarrow J$.
                 code.
@@ -362,8 +362,8 @@ block content
                       | lambda: name → nat → lang → lang → pure lang
                       | app: lang → lang → pure lang
                 br.
-                p#sigma
-                    <b>Defintion</b> (Sigma). The set $\Sigma(x:A)B(x)$ is the set
+                +tex.
+                    $\mathbf{Definition}$ (Sigma). The set $\Sigma(x:A)B(x)$ is the set
                     of pairs $(u,v)$ when $u:A(I),v:B(I,u)$ and restriction map $(u,v)\ f=(u\ f,v\ f)$.
                 code.
                     inductive total (lang: U) : U
@@ -401,26 +401,26 @@ block content
                       | inc: lang → homotopy lang
                       | ouc: lang → homotopy lang
                 br.
-                p.
-                    <b>Definition</b> (Cubical Presheaf $\mathbb{I}$).
+                +tex.
+                    $\mathbf{Definition}$ (Cubical Presheaf $\mathbb{I}$).
                     The identity types modeled with another presheaf, the presheaf on Lawvere
                     category of distributive lattices (theory of De Morgan algebras) denoted
-                    with $\Box$ &mdash; $\mathbb{I} : \Box^{op} \rightarrow \mathrm{Set}$.
-                p.
-                    <b>Properties of $\mathbb{I}$</b>. The presheaf $\mathbb{I}$:
+                    with $\Box$ — $\mathbb{I} : \Box^{op} \rightarrow \mathrm{Set}$.
+                +tex.
+                    $\mathbf{Definition}$ Properties of $\mathbb{I}$. The presheaf $\mathbb{I}$:
                     i) has to distinct global elements $0$ and $1$ (B$_1$);
                     ii) $\mathbb{I}$(I) has a decidable equality for each $I$ (B$_2$);
                     iii) $\mathbb{I}$ is tiny so the path functor $X \mapsto X^\mathbb{I}$ has right adjoint (B$_3$).;
                     iv) $\mathbb{I}$ has meet and join (connections).
-                p.
-                    <b>Interval Pretypes</b>. While having pretypes universe <b>V</b> with interval and
+                +tex.
+                    $\mathbf{Interval\ Pretypes}$. While having pretypes universe <b>V</b> with interval and
                     associated De Morgan algebra <b>(∧, ∨, -, 0, 1, I)</b> is enough to
                     perform DNF normalization and proving some basic statements about path, including:
                     contractability of singletons,
                     homotopy transport, congruence, functional extensionality; it is not enough for
                     proving β rule for Path type or path composition.
-                p.
-                    <b>Generalized Transport</b>. Generalized transport <b>transp</b> adresses
+                +tex.
+                    $\mathbf{Generalized\ Transport}. Generalized transport <b>transp</b> adresses
                     first problem of deriving the computational β rule for Path types:
                 code.
                     theorem Path-β (A : U) (a : A) (C : D A) (d: C a a (refl A a))
@@ -447,8 +447,8 @@ block content
                     transp⁻ⁱ A φ u = (transpⁱ A(i/1−i) φ u)(i/1−i) : A(i/0)
                     transpFillⁱ A φ u₀ = transpʲ A(i/i∧j) (φ∨(i=0)) u₀ : A
                 br.
-                p.
-                    <b>Partial Elements</b>. In order to explicitly define <b>hcomp</b>
+                +tex.
+                    $\mathbf{Partial\ Elements}$. In order to explicitly define <b>hcomp</b>
                     we need to specify n-cubes where some faces are missing. Partial
                     primitives <b>isOne</b>, <b>1=1</b> and <b>UIP</b> on pretypes are
                     derivable in Anders due to landing strict equality <b>Id</b> in <b>V</b> universe.
@@ -465,8 +465,8 @@ block content
                     def 1=1 : isOne 1 := ref 1
                     def UIP (A : V) (a b : A) (p q : Id A a b) : Id (Id A a b) p q := ref p
                 br.
-                p.
-                    <b>Cubical Subtypes</b>. For <b>(A : U) (i : I) (Partial A i)</b>
+                +tex.
+                    $\mathbf{Cubical\ Subtypes}$. For <b>(A : U) (i : I) (Partial A i)</b>
                     we can define subtype <b>A [ i ↦ u ]</b>. A term of this type is a term of
                     type A that is definitionally equal to u when <b>(IsOne i)</b> is satisfied.
                 code.
@@ -477,8 +477,8 @@ block content
                 p.
                     We have forth and back fusion rules <b>ouc (inc v) = v</b>
                     and <b>inc (outc v) = v</b>. Moreover, <b>ouc v</b> will reduce to u 1=1 when i=1.
-                p.
-                    <b>Homogeneous Composition</b>. Homogeneous composition <b>hcomp</b> is the answer to second problem:
+                +tex.
+                    $\mathbf{Homogeneous\ Composition}$. Homogeneous composition <b>hcomp</b> is the answer to second problem:
                     with <b>hcomp</b> and <b>transp</b> one can express path composition,
                     groupoid, category of groupoids (groupoid interpretation and internalization in type theory).
                     One of the main roles of homogeneous composition is to be a carrier in [higher]
