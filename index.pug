@@ -219,7 +219,7 @@ block content
                     Sample declarations. For example, signature <b>isProp (A : U)</b> of
                     type <b>U</b> could be defined as normalization-blocking axiom
                     without proof-term or by providing proof-term as definition.
-                code.
+                +code.
                     axiom isProp (A : U) : U
                     def isSet (A : U) : U := Π (a b : A)
                         (x y : Path A a b), Path (Path A a b) x y
@@ -423,7 +423,7 @@ block content
                 +tex.
                     $\mathbf{Generalized\ Transport}$. Generalized transport <b>transp</b> adresses
                     first problem of deriving the computational β rule for Path types:
-                code.
+                +code.
                     theorem Path-β (A : U) (a : A) (C : D A) (d: C a a (refl A a))
                        : Equ (C a a (refl A a)) d (J A a C d a (refl A a))
                       := λ (A : U), λ (a : A), λ (C : Π (x : A), Π (y : A), PathP (&lt;_&gt; A) x y → U),
@@ -460,7 +460,7 @@ block content
                     judgmentally equal if they represent the same subcube of <b>A</b>.
                     They are equal whenever they reduce to equal terms for all the
                     possible assignment of variables that make <b>r</b> equal to <b>1</b>.
-                code.
+                +code.
                     def Partial′ (A : U) (i : I) := Partial A i
                     def isOne : I -> V := Id I 1
                     def 1=1 : isOne 1 := ref 1
@@ -470,7 +470,7 @@ block content
                     $\mathbf{Cubical\ Subtypes}$. For <b>(A : U) (i : I) (Partial A i)</b>
                     we can define subtype <b>A [ i ↦ u ]</b>. A term of this type is a term of
                     type A that is definitionally equal to u when <b>(IsOne i)</b> is satisfied.
-                code.
+                +code.
                     def sub′ (A : U) (i : I) (u : Partial A i) : V := A [i ↦ u ]
                     def inc′ (A : U) (i : I) (a : A) : A [i ↦ [(i = 1) → a]] := inc A i a
                     def ouc′ (A : U) (i : I) (u : Partial A i) (a : A [i ↦ u]) : A := ouc a
@@ -485,7 +485,7 @@ block content
                     One of the main roles of homogeneous composition is to be a carrier in [higher]
                     inductive type constructors for calculating of homotopy colimits and
                     direct encoding of CW-complexes (or internal models as gluening of pushout cells).
-                code.
+                +code.
                      def comp (A : I → U) (r : I) (u : Π (i : I), Partial (A i) r) (u₀ : (A 0)[r ↦ u 0]) : A 1
                       := hcomp (A 1) r (λ (i : I), [(r = 1) → transp (&lt;j&gt; A (i ∨ j)) i (u i 1=1)])
                                (transp (&lt;i&gt; A i) 0 (ouc u₀))
