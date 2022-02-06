@@ -77,11 +77,13 @@ homotopy.dev/mathematics/
 The main purpose of Anders is doing Homotopy Theory:
 
 ```
-$ opam install anders
-$ anders repl
+$ dune exec anders repl
 
 Anders Proof Assisant version 1.3.0
-Copyright (c) 2021-2022 Groupoid Infinity
+Copyright © 2021–2022 Groupoid Infinity.
+
+For help type ‘:h’.
+
 >
 ```
 
