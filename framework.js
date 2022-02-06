@@ -28,6 +28,15 @@ const tex = new TeX({
     }
 });
 
+tex.postFilters.add(({math, data}) => {
+    if (!data.error) return;
+    data.root.walkTree((node) => {
+        if (node.isKind('merror')) {
+            console.log('TeX error:\n  ' + node.attributes.get('data-mjx-error'));
+        }
+    });
+});
+
 const svg = new SVG({fontCache: 'local'});
 
 function renderPug(block) {
