@@ -27,37 +27,6 @@ html
         if hopf
             script(src='https://homotopy.dev/mathematics/homotopy/hopf/bundle.js')
 
-        if javascriptEnabled
-            script(src='https://homotopy.dev/styles/mathjax.js?config=TeX-AMS_HTML')
-            script(src='https://homotopy.dev/highlight.js')
-            script.
-                window.MathJax = { jax: ["input/TeX", "input/MathML", "input/AsciiMath", "output/CommonHTML", "output/NativeMML"],
-                             TeX: { extensions: ["AMSmath.js", "AMSsymbols.js", "autoload-all.js"] },
-                             extensions: ["tex2jax.js", "asciimath2jax.js", "mml2jax.js", "MathMenu.js", "MathZoom.js"],
-                             "HTML-CSS": { imageFont: null },
-                             AuthorInit: function() {
-                                 MathJax.Hub.Register.StartupHook("TeX AMSmath Ready", function() {
-                                     var TEX = MathJax.InputJax.TeX;
-                                     TEX.Definitions.Add({
-                                         macros: {
-                                           llparenthesis: ['Macro', '\\mathopen{\u2987}'],
-                                           rrparenthesis: ['Macro', '\\mathclose{\u2988}'],
-                                           llbracket:     ['Macro', '\\mathopen{\u27E6}'],
-                                           rrbracket:     ['Macro', '\\mathclose{\u27E7}'],
-                                           incmap:        ['Macro', '\\mathclose{\u21AA}'],
-                                           meet:          ['Macro', '\\mathopen{\u2227}'],
-                                           map:           ['Macro', '\\mathopen{\u21A6}'],
-                                           join:          ['Macro', '\\mathopen{\u2228}'],
-                                         }
-                                     });
-                                 });
-                             },
-                             tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']],
-                                        processEscapes: true }
-                         };
-        else
-            meta(name='JavaScript' content='Disabled')
-
         style.
             svg a{fill:blue;stroke:blue}
             [data-mml-node="merror"]>g{fill:red;stroke:red}
