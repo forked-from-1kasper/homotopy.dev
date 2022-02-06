@@ -74,7 +74,6 @@ block content
                     $\mathbf{Installation}$. While we are on our road to Lean-like tactic language, currently
                     we are at the stage of regular cubical HTS type checker
                     with CHM-style [5] primitives.
-                p.
                     You may try it from Github sources: <a href="https://github.com/groupoid/anders">groupoid/anders</a> or
                     install through OPAM package manager.
                     Main commands are check (to check a program) and repl (to enter the proof shell).
@@ -308,26 +307,23 @@ block content
                     models of dependent type theory:  Comprehension Categories (Grothendieck, Jacobs),
                     LCCC (Seely), D-Categories and CwA (Cartmell), CwF (Dybjer), C-Systems (Voevodsky),
                     Natural Models (Awodey). While we can build some transports between them,
-                    we leave this excercise for our <a href="https://groupoid.space">mathematical components</a> library.
+                    we leave this excercise for our <a href="https://groupoid.space">The Cubical Base Library</a> library.
                 p.
                     We will use here the Coquand's notation
-                    for <a href="https://homotopy.dev/math/presheaf/">Presheaf Type Theories</a> in
+                    for <a href="https://homotopy.dev/mathematics/topoi/presheaf/">Presheaf Type Theories</a> in
                     terms of restriction maps.
                 br.
 
-                h2#univ Universe Hierarchies
+                h2 Universe Hierarchies
                 +tex.
-                    Language supports Agda-style hierarchy of universes: fibrant (U) and pretypes (V).
-                    All universes are bounded with preorder
+                    $\mathbf{Universes}$. Anders supports hierarchy with two universes:
+                    fibrant (U) and pretypes (V). All universes are bounded with preorder:
+                +tex(true).
                     $$
                        Fibrant_i \prec Pretypes_j,
                     $$
                 +tex.
-                    in which $i$ and $j$ are bounded with equation:
-                    $$
-                       i < j.
-                    $$
-                p.
+                    in which $i$ and $j$ are bounded with equation: $i < j$.
                     Large elimination to upper universes is prohibited. This is extendable to Agda model:
                 code.
                     inductive cosmos : U
