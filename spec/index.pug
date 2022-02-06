@@ -9,12 +9,6 @@ html
 block title
     title SPECIFICATION
 
-mixin tex
-    p!= tex(`${block}`)
-
-mixin code
-    code!= highlight(`${block}`)
-
 block content
     nav
         <a href='https://homotopy.dev/'>HTS</a>
@@ -28,8 +22,6 @@ block content
                 time Published: 03 FEB 2022
             p.
                 Here is given a preliminary specification on Anders external term format.
-            +code.
-                def test := Π (A : U) (B : A → U) (x : A), B x
             +tex.
                 $ \mathrm{C} $ is a byte. <br>
                 $ \mathrm{Q} $ (from <b>q</b>word) is a 64-bit little-endian integer constisting of 4 bytes. <br>

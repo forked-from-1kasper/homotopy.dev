@@ -1,3 +1,9 @@
+mixin tex
+    p!= tex(`${block}`)
+
+mixin code
+    code!= highlight(`${block}`)
+
 mixin header(logo, title, subtitle)
     header.header
         .header__titles
