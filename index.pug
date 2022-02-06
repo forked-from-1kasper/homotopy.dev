@@ -72,12 +72,12 @@ block content
 
                 +tex.
                     $\mathbf{Installation}$. While we are on our road to Lean-like tactic language, currently
-                    we are at the stage of regular cubical <b>HTS</b> type checker
-                    with <b>CHM</b>-style [5] primitives.
+                    we are at the stage of regular cubical HTS> type checker
+                    with CHM-style [5] primitives.
                 p.
                     You may try it from Github sources: <a href="https://github.com/groupoid/anders">groupoid/anders</a> or
                     install through OPAM package manager.
-                    Main commands are <b>check</b> (to check a program) and <b>repl</b> (to enter the proof shell).
+                    Main commands are check (to check a program) and repl (to enter the proof shell).
 
                 +code.
                     $ opam install anders
@@ -108,16 +108,16 @@ block content
             section
                 h1 SYNTAX
                 p.
-                    The syntax resembles original syntax of the reference <b>CCHM</b> type checker
-                    <b>cubicaltt</b>, is slightly compatible with <b>Lean</b> syntax
-                    and contains the full set of <b>Cubical&nbsp;Agda</b> [10]
+                    The syntax resembles original syntax of the reference CCHM type checker
+                    cubicaltt, is slightly compatible with <b>Lean</b> syntax
+                    and contains the full set of Cubical&nbsp;Agda [10]
                     primitives (except generic higher inductive schemes).
 
                 +tex.
                     Here is given the mathematical pseudo-code notation
                     of the language expressions that come immediately after parsing.
-                    The core syntax definition of <b>HTS</b> language $E$ corresponds
-                    to <b>exp</b> type defined in <b>expr.ml</b> OCaml module:
+                    The core syntax definition of HTS language $E$ corresponds
+                    to the type defined in OCaml module:
 
                 +tex.
                     $$
@@ -150,17 +150,17 @@ block content
                 +tex.
                     $\mathbf{Keywords}$.
                     The words of a top-level language (file or repl) consist of keywords or identifiers.
-                    The keywords are following: <b>module</b>, <b>where</b>, <b>import</b>, <b>option</b>,
-                    <b>def</b>, <b>axiom</b>, <b>postulate</b>, <b>theorem</b>, <b>(</b>, <b>)</b>,
-                    <b>[</b>, <b>]</b>, <b>&lt;</b>, <b>&gt;</b>, <b>&#47;</b>, <b>.1</b>, <b>.2</b>, <b>Π</b>,
-                    <b>Σ</b>, <b>,</b>, <b>λ</b>, <b>×</b>, <b>→</b>, <b>:</b>, <b>:=</b>, <b>↦</b>, <b>U</b>,
-                    <b>V</b>, <b>∧</b>, <b>∨</b>, <b>-</b>, <b>+</b>, <b>@</b>, <b>PathP</b>, <b>transp</b>,
-                    <b>hcomp</b>, <b>zero</b>, <b>one</b>, <b>Partial</b>, <b>inc</b>, <b>ouc</b>,
-                    <b>interval</b>, <b>W</b>, <b>sup</b>, <b>Glue</b>, <b>glue</b>, <b>unglue</b>, <b>ind$_0$</b>,
-                    <b>ind$_1$</b>, <b>ind$_2$</b>, <b>ind$_W$</b>.
+                    The keywords are following: module, where, import, option,
+                    def, axiom, postulate, theorem, (, ),
+                    [, ], &lt;, &gt;, &#47;, .1, .2, Π,
+                    Σ, ,, λ, ×, →, :, :=, ↦, U,
+                    V, ∧, ∨, -, +, @, PathP, transp,
+                    hcomp, zero, one, Partial, inc, ouc,
+                    interval, W, sup, Glue, glue, unglue, ind$_0$,
+                    ind$_1$, ind$_2$, <nobr>ind$_W$</nobr>.
                 +tex.
                     $\mathbf{Indentifiers}$. Identifiers support UTF-8. Indentifiers couldn't start
-                    with <b>:</b>, <b>-</b>, <b>→</b>. Sample identifiers:
+                    with :, -, →. Sample identifiers:
                 code.
                     ¬-of-∨, 1=1, is-?, =, $^~]!005x, ∞, x→Nat, f'
                 br.
@@ -169,13 +169,13 @@ block content
                     BNF notation of module consists of imports, options and declarations.
                 +tex.
                     $\mathbf{Imports}$. The import construction supports file folder
-                    structure (without file extensions) by using reserved symbol <b>&#47;</b>
+                    structure (without file extensions) by using reserved symbol &#47;
                     for hierarchy walking.
                 +tex.
                     $\mathbf{Options}$. Each option holds bool value. Language supports following options:
-                    1) <b>girard</b> (enables U : U);
-                    2) <b>pre-eval</b> (normalization cache);
-                    3) <b>impredicative</b> (infinite hierarchy with impredicativity rule);
+                    1) girard (enables U : U);
+                    2) pre-eval (normalization cache);
+                    3) impredicative (infinite hierarchy with impredicativity rule);
                 code.
                     %start &lt;Module.file> file
                     %start &lt;Module.command> repl
@@ -192,8 +192,8 @@ block content
                     In Anders you can enable or disable language core types,
                     adjust syntaxes or tune inner variables of the type checker.
                     Here is the example how to setup minimal core able to prove
-                    internalization of <b>MLTT-73</b> variation (<b>Path</b>
-                    instead of <b>Id</b> and no inductive types, see base library):
+                    internalization of MLTT-73 variation (Path
+                    instead of Id and no inductive types, see base library):
                 +tex.
                     $\mathbf{Declarations}$. Language supports following top level declarations:
                     1) <b>axiom</b> (non-computable declaration that breakes normalization);
