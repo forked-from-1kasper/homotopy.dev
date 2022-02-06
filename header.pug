@@ -1,5 +1,13 @@
-mixin tex(center=false)
-    p(style={'text-align': center ? 'center' : null})!= tex(`${block}`)
+mixin tex(center=false, paragraph=true)
+    if paragraph
+        p(style=center ? {'text-align': 'center' } : null)!= tex(`${block}`)
+    else
+        span(style=center ? {
+            'text-align': 'center',
+            'display': 'block',
+            'padding-top': '8px',
+            'padding-bottom': '8px',
+        } : null)!= tex(`${block}`)
 
 mixin code
     code!= highlight(`${block}`)
@@ -23,9 +31,6 @@ html
         meta(property='og:type'        content='website')
         meta(property='og:image'       content='https://avatars.githubusercontent.com/u/17128096?s=400&u=66a63d4cdd9625b2b4b37d724cc00fe6401e5bd8&v=4')
         link(rel='stylesheet' href='https://homotopy.dev/main.css?v=1')
-
-        if hopf
-            script(src='https://homotopy.dev/mathematics/homotopy/hopf/bundle.js')
 
         style.
             svg a{fill:blue;stroke:blue}

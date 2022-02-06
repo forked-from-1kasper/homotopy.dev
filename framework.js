@@ -20,7 +20,11 @@ const tex = new TeX({
         incmap:        '\\mathclose{\u21AA}',
         meet:          '\\mathopen{\u2227}',
         map:           '\\mathopen{\u21A6}',
-        join:          '\\mathopen{\u2228}'
+        join:          '\\mathopen{\u2228}',
+        mapright:      ['\\xrightarrow{{#1}}', 1],
+        mapdown:       ['\\Big\\downarrow\\rlap{\\raise2pt{\\scriptstyle{#1}}}', 1],
+        mapdiagl:      ['\\vcenter{\\searrow}\\rlap{\\raise2pt{\\scriptstyle{#1}}}', 1],
+        mapdiagr:      ['\\vcenter{\\swarrow}\\rlap{\\raise2pt{\\scriptstyle{#1}}}', 1],
     }
 });
 
