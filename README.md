@@ -89,5 +89,5 @@ For help type ‘:h’.
 
 ## Credits
 
-* Maxim Sokhatsky
+* Namdak Tonpa
 * Siegmentation Fault
