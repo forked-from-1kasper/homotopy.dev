@@ -1,5 +1,5 @@
-mixin tex
-    p!= tex(`${block}`)
+mixin tex(center=false)
+    p(style={'text-align': center ? 'center' : null})!= tex(`${block}`)
 
 mixin code
     code!= highlight(`${block}`)
