@@ -9,6 +9,12 @@ html
 block title
     title SPECIFICATION
 
+mixin tex
+    p!= tex(`${block}`)
+
+mixin code
+    code!= highlight(`${block}`)
+
 block content
     nav
         <a href='https://homotopy.dev/'>HTS</a>
@@ -20,22 +26,25 @@ block content
                 h1 BINARY FORMAT
             aside
                 time Published: 03 FEB 2022
-                p.
-                    Here is given a preliminary specification on Anders external term format.
-                p.
-                    $ \mathrm{C} $ is a byte. <br>
-                    $ \mathrm{Q} $ (from <b>q</b>word) is a 64-bit little-endian integer constisting of 4 bytes. <br>
-                    $ \mathrm{B} $ is a UTF-8 string encoded as its length followed by the string itself.
-                      In a BNF-like notation this written as $ \mathrm{B} := \mathrm{Q}^n\ \underbrace{\mathrm{C}\ \mathrm{C}\ \ldots\ \mathrm{C}}_{n\ \text{times}} $ <br>
-                    $ \mathbb{Z} $ represents here string (given by <samp>Z.to_bits</samp> function) that encodes <a href="https://github.com/ocaml/Zarith">Zarith</a> integer. <br>
-                    $ \mathrm{I} := \texttt{00}_{16}\ |\ \texttt{FF}_{16}\ \mathrm{B}\ \mathrm{Q} $ is a ident,
-                      where first part represents ignored variable (like in $ \lambda a. \lambda \_. a $). <br>
-                    $ \mathrm{D} := \texttt{00}_{16}\ |\ \texttt{FF}_{16} $ represents interval elements ($ 0 $ and $ 1 $ respectively). <br>
-                    $ \mathbb{F} := \mathrm{Q}^n\ \underbrace{(\mathrm{I}\ \mathrm{D})\ \ldots\ (\mathrm{I}\ \mathrm{D})}_{n\ \text{times}} $ is a face. <br>
-                    $ \mathrm{E} $ is a language expression. <br>
-                    $ \mathrm{S} := \mathrm{Q}^n\ \underbrace{(\mathbb{F}\ \mathrm{E})\ \ldots\ (\mathbb{F}\ \mathrm{E})}_{n\ \text{times}} $ is a cubical system.
-            h2 COSMOS
             p.
+                Here is given a preliminary specification on Anders external term format.
+            +code.
+                def test := Π (A : U) (B : A → U) (x : A), B x
+            +tex.
+                $ \mathrm{C} $ is a byte. <br>
+                $ \mathrm{Q} $ (from <b>q</b>word) is a 64-bit little-endian integer constisting of 4 bytes. <br>
+                $ \mathrm{B} $ is a UTF-8 string encoded as its length followed by the string itself.
+                  In a BNF-like notation this written as $ \mathrm{B} := \mathrm{Q}^n\ \underbrace{\mathrm{C}\ \mathrm{C}\ \ldots\ \mathrm{C}}_{n\ \text{times}} $ <br>
+                $ \mathbb{Z} $ represents here string (given by <samp>Z.to_bits</samp> function) that encodes <a href="https://github.com/ocaml/Zarith">Zarith</a> integer. <br>
+                $ \mathrm{I} := \texttt{00}_{16}\ |\ \texttt{FF}_{16}\ \mathrm{B}\ \mathrm{Q} $ is a ident,
+                  where first part represents ignored variable (like in $ \lambda a. \lambda \_. a $). <br>
+                $ \mathrm{D} := \texttt{00}_{16}\ |\ \texttt{FF}_{16} $ represents interval elements ($ 0 $ and $ 1 $ respectively). <br>
+                $ \mathbb{F} := \mathrm{Q}^n\ \underbrace{(\mathrm{I}\ \mathrm{D})\ \ldots\ (\mathrm{I}\ \mathrm{D})}_{n\ \text{times}} $ is a face. <br>
+                $ \mathrm{E} $ is a language expression. <br>
+                $ \mathrm{S} := \mathrm{Q}^n\ \underbrace{(\mathbb{F}\ \mathrm{E})\ \ldots\ (\mathbb{F}\ \mathrm{E})}_{n\ \text{times}} $ is a cubical system.
+
+            h2 COSMOS
+            +tex.
                 $$
                     \begin{array}{llll} \mathrm{Head} & \mathrm{Tail} & \mathrm{Instruction} \\
                          \hline
@@ -47,7 +56,7 @@ block content
                 $$
 
             h2 ΠΣ
-            p.
+            +tex.
                 $$
                     \begin{array}{llll} \mathrm{Head} & \mathrm{Tail} & \mathrm{Instruction} \\
                          \hline
@@ -63,7 +72,7 @@ block content
                 $$
 
             h2 INTERVAL
-            p.
+            +tex.
                 $$
                     \begin{array}{llll} \mathrm{Head} & \mathrm{Tail} & \mathrm{Instruction} \\
                          \hline
@@ -83,7 +92,7 @@ block content
                 $$
 
             h2 KAN
-            p.
+            +tex.
                 $$
                     \begin{array}{llll} \mathrm{Head} & \mathrm{Tail} & \mathrm{Instruction} \\
                          \hline

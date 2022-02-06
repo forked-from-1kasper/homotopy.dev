@@ -16,6 +16,7 @@
   "preinstall": "npm i -g node-sass && npm i -g pug-cli",
   "dependencies": {
     "katex": "^0.15.2",
+    "mathjax-full": "^3.2.0",
     "node-sass": "^4.14.1",
     "npm": "^6.13.4",
     "pug": "^3.0.1",
