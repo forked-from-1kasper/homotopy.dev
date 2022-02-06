@@ -10,9 +10,20 @@ const adaptor = liteAdaptor();
 const handler = RegisterHTMLHandler(adaptor);
 
 const tex = new TeX({
-    packages: ['base', 'autoload', 'require', 'ams', 'newcommand'],
-    inlineMath: [ ["$","$"] ]
+    packages: ['base', 'autoload', 'require', 'ams', 'amscd', 'newcommand', 'configmacros'],
+    inlineMath: [ ["$", "$"] ],
+    macros: {
+        llparenthesis: '\\mathopen{\u2987}',
+        rrparenthesis: '\\mathclose{\u2988}',
+        llbracket:     '\\mathopen{\u27E6}',
+        rrbracket:     '\\mathclose{\u27E7}',
+        incmap:        '\\mathclose{\u21AA}',
+        meet:          '\\mathopen{\u2227}',
+        map:           '\\mathopen{\u21A6}',
+        join:          '\\mathopen{\u2228}'
+    }
 });
+
 const svg = new SVG({fontCache: 'none'});
 
 function renderPug(block) {
