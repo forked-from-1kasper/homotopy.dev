@@ -4,7 +4,6 @@ const {SVG} = require('mathjax-full/js/output/svg.js');
 const {liteAdaptor} = require('mathjax-full/js/adaptors/liteAdaptor.js');
 const {RegisterHTMLHandler} = require('mathjax-full/js/handlers/html.js');
 const {AssistiveMmlHandler} = require('mathjax-full/js/a11y/assistive-mml.js');
-
 const {AllPackages} = require('mathjax-full/js/input/tex/AllPackages.js');
 
 const adaptor = liteAdaptor();
