@@ -24,7 +24,7 @@ const tex = new TeX({
     }
 });
 
-const svg = new SVG({fontCache: 'none'});
+const svg = new SVG({fontCache: 'local'});
 
 function renderPug(block) {
     var recv; with({pug_html: ""}){
