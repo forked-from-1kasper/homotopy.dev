@@ -10,9 +10,11 @@ const {AllPackages} = require('mathjax-full/js/input/tex/AllPackages.js');
 const adaptor = liteAdaptor();
 const handler = RegisterHTMLHandler(adaptor);
 
-const tex = new TeX({packages: ['base', 'autoload', 'require', 'ams', 'newcommand'], inlineMath: [ ["$","$"] ]  });
+const tex = new TeX({
+    packages: ['base', 'autoload', 'require', 'ams', 'newcommand'],
+    inlineMath: [ ["$","$"] ]
+});
 const svg = new SVG({fontCache: 'none'});
-const html = mathjax.document('', {InputJax: tex, OutputJax: svg});
 
 function renderPug(block) {
     var recv; with({pug_html: ""}){
@@ -21,7 +23,9 @@ function renderPug(block) {
 }
 
 function renderTeX(formulae) {
-    return adaptor.innerHTML(mathjax.document(formulae, {InputJax: tex, OutputJax: svg}).render().document.body);
+    return adaptor.innerHTML(mathjax.document(formulae, {
+        InputJax: tex, OutputJax: svg
+    }).render().document.body);
 }
 
 exports.tex = function (block) {
