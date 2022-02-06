@@ -116,32 +116,33 @@ block content
                 +tex.
                     Here is given the mathematical pseudo-code notation
                     of the language expressions that come immediately after parsing.
-                    The core syntax definition of HTS language $E$ corresponds
+                    The core syntax definition of HTS language $\mathrm{E}$ corresponds
                     to the type defined in OCaml module:
 
                 +tex(true).
                     $$
                     \begin{array}{c} \\
-                       E := cosmos\ |\ var\ |\ MLTT\ |\ CCHM\ |\ Im \\
-                       CCHM := path\ |\ I\ |\ part\ |\ sub\ |\ kan\ |\ glue \\
-                       MLTT := pi\ |\ sigma\ |\ id\ |\ 0\ |\ 1\ |\ 2\ |\ W \\
+                       \mathrm{E} := \mathrm{cosmos}\ |\ \mathrm{var}\ |\ \mathrm{MLTT}\ |\ \mathrm{CCHM}\ |\ \mathrm{Im} \\
+                       \mathrm{CCHM} := \mathrm{path}\ |\ \mathrm{I}\ |\ \mathrm{part}\ |\ \mathrm{sub}\ |\ \mathrm{kan}\ |\ \mathrm{glue} \\
+                       \mathrm{MLTT} := \mathrm{pi}\ |\ \mathrm{sigma}\ |\ \mathrm{id}\ |\ 0\ |\ 1\ |\ 2\ |\ \mathrm{W} \\
                        \\
-                       cosmos := \mathbf{U}_j \ |\ \mathbf{V}_k \\
-                       var := \mathbf{var}\ name\ |\ \mathbf{hole} \\
-                       pi := \Pi\ name\ E\ E\ |\ \lambda\ name\ E\ E\ |\ E\ E \\
-                       sigma := \Sigma\ name\ E\ E\ |\ (E,E)\ |\ E.1\ |\ E.2 \\
-                       id := \mathbf{Id}\ E\ |\ \mathbf{ref}\ E\ |\ \mathbf{idJ}\ E \\
-                       0 := \mathbf{0}\ |\ \mathbf{ind_0}\ E\ E\ E \\
-                       1 := \mathbf{1}\ |\ \star |\ \mathbf{ind_1}\ E\ E\ E \\
-                       2 := \mathbf{2}\ |\ 0_2\ |\ 1_2\ |\ \mathbf{ind_2}\ E\ E\ E \\
-                       W := \mathbf{W}\ name\ E\ E\ |\ \mathbf{sup}\ E\ E\ |\ \mathbf{ind_{W}}\ E\ E \\
-                       path := \mathbf{Path}\ E\ |\ E^i\ |\ E\ @\ E \\
-                       I := \mathbf{I}\ |\ 0\ |\ 1\ |\ E\ \meet\ E\ |\ E\ \join\ E\ |\ \neg E \\
-                       part := \mathbf{Partial}\ E\ E\ |\ \mathbf{[}\ (E=I) \rightarrow E, ...\ \mathbf{]} \\
-                       sub := \mathbf{inc}\ E\ |\ \mathbf{ouc}\ E\ |\ E\ \mathbf{[}\ I\ \map\ E\ \mathbf{]} \\
-                       kan := \mathbf{transp}\ E\ E\ |\ \mathbf{hcomp}\ E \\
-                       glue := \mathbf{Glue}\ E\ |\ \mathbf{glue}\ E\ |\ \mathbf{unglue}\ E\ E \\
-                       Im := \mathbf{Im}\ E\ |\ \mathbf{Inf}\ E\ |\ \mathbf{Join}\ E\ |\ \mathbf{ind_{Im}}\ E\ E \\
+                       \mathrm{cosmos} := \mathbf{U}_j \ |\ \mathbf{V}_k \\
+                       \mathrm{var} := \mathbf{var}\ \mathrm{ident}\ |\ \mathbf{hole} \\
+                       \mathrm{pi} := \Pi\ \mathrm{ident}\ \mathrm{E}\ \mathrm{E}\ |\ \lambda\ \mathrm{ident}\ \mathrm{E}\ \mathrm{E}\ |\ \mathrm{E}\ \mathrm{E} \\
+                       \mathrm{sigma} := \Sigma\ \mathrm{ident}\ \mathrm{E}\ \mathrm{E}\ |\ (\mathrm{E}, \mathrm{E})\ |\ \mathrm{E}\mathbf{.1}\ |\ \mathrm{E}\mathbf{.2} \\
+                       \mathrm{id} := \mathbf{Id}\ \mathrm{E}\ |\ \mathbf{ref}\ \mathrm{E}\ |\ \mathbf{idJ}\ \mathrm{E} \\
+                       0 := \mathbf{0}\ |\ \mathbf{ind_0}\ \mathrm{E}\ \mathrm{E}\ \mathrm{E} \\
+                       1 := \mathbf{1}\ |\ \star\ |\ \mathbf{ind_1}\ \mathrm{E}\ \mathrm{E}\ \mathrm{E} \\
+                       2 := \mathbf{2}\ |\ 0_2\ |\ 1_2\ |\ \mathbf{ind_2}\ \mathrm{E}\ \mathrm{E}\ \mathrm{E} \\
+                       \mathrm{W} := \mathbf{W}\ \mathrm{ident}\ \mathrm{E}\ \mathrm{E}\ |\ \mathbf{sup}\ \mathrm{E}\ \mathrm{E}\ |\ \mathbf{ind_{W}}\ \mathrm{E}\ \mathrm{E} \\
+                       \mathrm{path} := \mathbf{Path}\ \mathrm{E}\ |\ \mathrm{E}^i\ |\ \mathrm{E}\ @\ \mathrm{E} \\
+                       \mathrm{I} := \mathbf{I}\ |\ 0\ |\ 1\ |\ \mathrm{E}\ \meet\ \mathrm{E}\ |\ \mathrm{E}\ \join\ \mathrm{E}\ |\ \neg \mathrm{E} \\
+                       \mathrm{D} := 0\ |\ 1\ |\ \mathrm{ident} \\
+                       \mathrm{part} := \mathbf{Partial}\ \mathrm{E}\ \mathrm{E}\ |\ \mathbf{[}\ (\mathrm{E} = \mathrm{D}) \rightarrow \mathrm{E}, ...\ \mathbf{]} \\
+                       \mathrm{sub} := \mathbf{inc}\ \mathrm{E}\ |\ \mathbf{ouc}\ \mathrm{E}\ |\ \mathrm{E}\ \mathbf{[}\ \mathrm{I}\ \map\ \mathrm{E}\ \mathbf{]} \\
+                       \mathrm{kan} := \mathbf{transp}\ \mathrm{E}\ \mathrm{E}\ |\ \mathbf{hcomp}\ \mathrm{E} \\
+                       \mathrm{glue} := \mathbf{Glue}\ \mathrm{E}\ |\ \mathbf{glue}\ \mathrm{E}\ |\ \mathbf{unglue}\ \mathrm{E}\ \mathrm{E} \\
+                       \mathrm{Im} := \mathbf{Im}\ \mathrm{E}\ |\ \mathbf{Inf}\ \mathrm{E}\ |\ \mathbf{Join}\ \mathrm{E}\ |\ \mathbf{ind_{Im}}\ \mathrm{E}\ \mathrm{E} \\
                        \\
                     \end{array}
                     $$
@@ -575,11 +576,9 @@ block content
                     are useful for modeling infinite processes and are part
                     of Milner's Pi-calculus. Coinductive streams could be
                     found in many <b>MLTT</b> base libraries.
-                p.
-                    <center><table cellspacing=5><tr><td width=5><img src="https://n2o.dev/img/pdf.jpg" width=35></td><td width=400>
-                    <a href="https://github.com/groupoid/anders/blob/master/doc/anders.pdf">
-                    <h3>ANDERS.PDF</h3>
-                    </a></td></tr></table></center>
+                p(style={"text-align": "center"}).
+                    <img src="https://n2o.dev/img/pdf.jpg" width=35>
+                    <a href="https://github.com/groupoid/anders/blob/master/doc/anders.pdf">ANDERS.PDF</a>
 
             section
                 h1 Bibliography
