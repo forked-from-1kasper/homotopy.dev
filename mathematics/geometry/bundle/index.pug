@@ -4,20 +4,18 @@ block title
     title BUNDLE
 
 block content
+    nav
+        <a href='https://homotopy.dev/'>HTS</a>
+        <a href='https://homotopy.dev/library/'>LIB</a>
+        <a href='#'>BUNDLE</a>
     article.main
         .exe
             section
                 h1 BUNDLE
-        aside <a href="https://homotopy.dev/library/">Homotopy Library</a>
+        aside
             time 20 MAY 2018
         section
         .exe
-            figure.
-                $$\def\mapright#1{\xrightarrow{{#1}}}
-                  \def\mapdown#1{\Big\downarrow\rlap{\raise2pt{\scriptstyle{#1}}}}
-                  \def\mapdiagl#1{\vcenter{\searrow}\rlap{\raise2pt{\scriptstyle{#1}}}}
-                  \def\mapdiagr#1{\vcenter{\swarrow}\rlap{\raise2pt{\scriptstyle{#1}}}}
-                $$
             p.
                 <a href="https://raw.githubusercontent.com/groupoid/cubical/master/src/bundle.ctt">
                 Bundle package</a> contains basic information about fibers (needed
