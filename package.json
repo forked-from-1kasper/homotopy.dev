@@ -4,7 +4,7 @@
   "description": "Anders: Homotopy Library",
   "main": "",
   "scripts": {
-    "start": "node-sass ./styles -o ./ && pug ./ ",
+    "start": "node-sass ./styles -o ./ && pug -O ./framework.js ./ ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

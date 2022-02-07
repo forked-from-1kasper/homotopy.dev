@@ -7,7 +7,7 @@
 use[data-c]{stroke-width:3px}
 </style></head><body class="content"></body></html><html><head><meta property="og:title" content="FUNEXT"><meta property="og:description" content="Functional Extensionality"><meta property="og:url" content="https://homotopy.dev/foundations/univalent/funext/"></head></html><title>FUNEXT</title><nav><a href='https://homotopy.dev/'>HTS</a>
 <a href='https://homotopy.dev/library/'>LIB</a>
-<a href='#'>FUNEXT</a></nav><article class="main"><div class="om"><section><h1>FUNEXT</h1></section></div><aside><a href="https://homotopy.dev/library/">Homotopy Library</a><time>Published: 25 JUL 2018</time></aside><div class="om"><section><p></p><h2>Constructors</h2><code>funext (A B: U) (f g: A -> B)
+<a href='#'>FUNEXT</a></nav><article class="main"><div class="om"><section><h1>FUNEXT</h1></section></div><aside><time>Published: 25 JUL 2018</time></aside><div class="om"><section><p></p><h2>Constructors</h2><code>funext (A B: U) (f g: A -> B)
        (p: (x:A) -> Path B (f x) (g x))
      : Path (A -> B) f g</code><p></p><h2>Elimination</h2><code>happly (A B: U) (f g: A -> B) (p: Path (A -> B) f g) (x: A)
      : Path B (f x) (g x)</code><p></p><h2>Computation</h2><code>funext_Beta (A B: U) (f g: A -> B)
