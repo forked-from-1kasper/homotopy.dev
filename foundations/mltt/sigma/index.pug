@@ -23,10 +23,9 @@ block content
         .exe
             section
                 +tex.
-                    $Σ$-type is a total space of fibration. Element of total
-                    space is formed as a pair of basepoint and fibration.
-                +tex.
-                    Categorically, $Σ$ is a dependent product type,
+                    $\Sigma$-type is a total space of fibration. Element of total
+                    space is formed as a pair of basepoint and fibration. <br>
+                    Categorically, $\Sigma$ is a dependent product type,
                     the generalization of products or disjoint union of family of sets.
 
             section
@@ -83,6 +82,7 @@ block content
                           (a: A) (b: B a)
                         : Equ (B a) b (pr2 A B (a,b))
                         = reflect (B a)
+                br
 
                 +code.
                     Eta12 (A: U) (B: A -> U) (p: Sigma A B)
@@ -130,7 +130,7 @@ block content
                     $\mathbf{Theorem}$ (Propositions). If codomain $B: A \rightarrow U$
                     of dependent the function $f: (x:A) \rightarrow B(x)$
                     is a mere proposition and for two sigmas $t,u: \Sigma(A,B)$ there is
-                    a path $Path_A(t_1,u_1)$ then the path between second components $Path_{B(p@i)}(t_2,u_2)$
+                    a path $\mathrm{Path}_A(t_1,u_1)$ then the path between second components $\mathrm{Path}_{B(p@i)}(t_2,u_2)$
                     is a mere proposition too. Same if codomain is set.
 
                 +code.
