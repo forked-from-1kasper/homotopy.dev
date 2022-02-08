@@ -226,14 +226,9 @@ block content
                     i) $e:A$; ii) $t: \prod_{x:A} A = A$; iii) $p: \prod_{x:A}t_x(e) = x$.
 
                 +code.
-                    def ∞-unital-magma (X : U) :=
-                    Σ (e : X) (μ : X → X → X), Π (x : X),
-                      Path X (μ e x) x × Path X (μ x e) x
+                    def is-homogeneous (A : U) :=
+                    Σ (e : A) (t : A → equiv A A), Π (x : A), Path A ((t x).1 e) x
 
-                    def is-left-invertible (X : U) (M : ∞-unital-magma X) :=
-                    Π (a : X), isEquiv X X (λ (x : X), M.μ x a)
-
-                    def H-space := Σ (X : U), ∞-unital-magma X
                 br.
 
                 h1 LITERATURE
