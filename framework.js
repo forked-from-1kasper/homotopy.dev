@@ -21,6 +21,7 @@ const tex = new TeX({
         meet:          '\\mathopen{\u2227}',
         map:           '\\mathopen{\u21A6}',
         join:          '\\mathopen{\u2228}',
+        trans:         '\\, \\mathbin{\\vcenter{\\rule{.3ex}{.3ex}}} \\,',
         mapright:      ['\\xrightarrow{{#1}}', 1],
         mapdown:       ['\\Big\\downarrow\\rlap{\\raise2pt{\\scriptstyle{#1}}}', 1],
         mapdiagl:      ['\\vcenter{\\searrow}\\rlap{\\raise2pt{\\scriptstyle{#1}}}', 1],

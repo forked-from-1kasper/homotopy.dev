@@ -26,163 +26,170 @@ block content
 
                 +tex.
                     $\mathbf{Definition}$ (Infinitesimal Shape Modality or de Rham stack). The two maps
-                    $Im∶ U \rightarrow U$ and $\iota_A ∶ A \rightarrow Im(A)$ are called <i>shape modality</i> if
+                    $\mathrm{Im} : U \rightarrow U$ and $\iota_A ∶ A \rightarrow \mathrm{Im}(A)$
+                    are called <i>shape modality</i> if
                     i) $\iota_A$ is an equivalence, the type $A$ is then called coreduced.; ii)
-                    identity types of coreduced types are coreduced; iii) if $B∶Im(A)\rightarrow U$
-                    is a dependent type such that for all $a∶Im(A)$ the type $B(a)$ is coreduced,
-                    then we can define a section of $B$ by induction. The $Im(A)$ is called de Rham space.
+                    identity types of coreduced types are coreduced; iii) if $B : \mathrm{Im}(A)\rightarrow U$
+                    is a dependent type such that for all $a : \mathrm{Im}(A)$ the type $B(a)$ is coreduced,
+                    then we can define a section of $B$ by induction. The $\mathrm{Im}(A)$ is called de Rham space.
 
                 +code.
-                    Im : U -> U
-                    ImUnit (A: U) : A -> Im A
-                    isCoreduced (A:U): U = isEquiv A (Im A) (ImUnit A)
-                    ImCoreduced (A:U): isCoreduced (Im A)
-                    ImRecursion (A B: U) (c: isCoreduced B) (f: A -> B) : Im A -> B
-                    ImInduction (A: U) (B: Im A -> U) (x: (a: Im A) -> isCoreduced (B a))
-                                (y: (a: A) -> B (ImUnit A a)) : (a: Im A) -> B a
+                    def ι (A : U) (a : A) : ℑ A := ℑ-unit a
+
+                    def is-coreduced (A : U) : U := isEquiv A (ℑ A) (ι A)
+
+                    def ℑ-coreduced (A : U) : is-coreduced (ℑ A) :=
+                    isoToEquiv (ℑ A) (ℑ (ℑ A)) (ι (ℑ A)) (μ A)
+                               (λ (x : ℑ (ℑ A)), &lt;_&gt; x)
+                               (λ (y : ℑ A), &lt;_&gt; y)
+
+                    def ℑ-rec (A B : U) (c : is-coreduced B) (f : A → B) : ℑ A → B :=
+                    ℑ-ind A (λ (_ : ℑ A), B) (λ (_ : ℑ A), c) f
+
+                    def ℑ-ind (A : U) (B : ℑ A → U) (c : Π (a : ℑ A), is-coreduced (B a))
+                              (f : Π (a : A), B (ι A a)) (a : ℑ A) : B a :=
+                    (c a (ind-ℑ A B (λ (x : A), ι (B (ι A x)) (f x)) a)).1.1
                 br
 
                 h1 ÉTALE MAP
 
-                +tex.
-                    $\mathbf{Definition}$ (Étale map). A map $f:A \rightarrow B$ is <i>formally étale</i>
-                    if its naturality square is a pullback:
+                p
+                    +tex(false, false).
+                        $\mathbf{Definition}$ (Étale map). A map $f:A \rightarrow B$ is <i>formally étale</i>
+                        if its naturality square is a pullback:
 
-                +tex(true).
-                    $$
-                    \begin{array}{ccc}
-                        A & \mapright{ι_A} & Im(A) \\
-                        \mapdown{f} & \square & \mapdown{Im(f)} \\
-                        B & \mapright{ι_B} & Im(B) \\
-                    \end{array}
-                    $$
+                    +tex(true, false).
+                        $$
+                        \begin{array}{ccc}
+                            A & \mapright{ι_A} & \mathrm{Im}(A) \\
+                            \mapdown{f} &  & \mapdown{} \\
+                            B & \mapright{ι_B} & \mathrm{Im}(B) \\
+                        \end{array}
+                        $$
 
-                +tex.
-                    with induced naturality equation:
+                    .
+                        with induced naturality equation:
 
-                +tex(true).
-                    $$
-                        \eta_f(x) : Im(f(\iota_A(x))) = \iota_B(Im(f(x))).
-                    $$
+                    +tex(true, false).
+                        $$
+                            \eta_f(x) : \mathrm{Im}(f(\iota_A(x))) = \iota_B(\mathrm{Im}(f(x))).
+                        $$
 
                 +code.
-                    ImApp (A B: U) (f: A -> B) : Im A -> Im B
-                    ImNaturality (A B: U) (f: A -> B) : (a: A) ->
-                      Path (Im B) ((ImUnit B) (f a)) ((ImApp A B f) (ImUnit A a))
+                    def ℑ-app (A B : U) (f : A → B) : ℑ A → ℑ B :=
+                    ℑ-rec A (ℑ B) (ℑ-coreduced B) (∘ A B (ℑ B) (ι B) f)
+                    
+                    def ℑ-naturality (A B : U) (f : A → B) (a : A) :
+                        Path (ℑ B) ((ι B) (f a)) ((ℑ-app A B f) (ι A a)) :=
+                    &lt;_&gt; ℑ-unit (f a)
+
                 br.
 
                 +code.
-                    isÉtaleMap (A B: U) (f: A -> B): U
-                      = isPullbackSq A iA B (Im B) x y w f h where
-                      iA : U = Im A
-                      iB : U = Im B
-                      x: iA -> iB = ImApp  A B f
-                      y:  B -> iB = ImUnit B
-                      w:  A -> iA = ImUnit A
-                      c1: A -> iB = o A iA iB x w
-                      c2: A -> iB = o A B  iB y f
-                      T2: U = (a:A) -> Path iB (c1 a) (c2 a)
-                      h: T2 = \(a : A) -> &lt;i&gt; ImNaturality A B f a @ -i
+                    def isÉtaleMap (A B : U) (f : A → B) : U :=
+                    isPullbackSq A (ℑ A) B (ℑ B) (ℑ-app A B f) (ι B) (ι A) f
+                                   (λ (a : A), &lt;_&gt; ℑ-unit (f a))
+
                 br.
 
                 +code.
-                    EtaleMap (A B: U): U
-                      = (f: A -> B)
-                      * isÉtaleMap A B f
+                    def ÉtaleMap (A B : U) : U := Σ (f : A → B), isÉtaleMap A B f
+
                 br.
 
-                +tex.
-                    $\mathbf{Definition}$ (Infinitesimal Close).
-                    Let $x,y: A$, then we have a type which could be
-                    read x is infinitesimally close to y and is given as:
+                p
+                    +tex(false, false).
+                        $\mathbf{Definition}$ (Infinitesimal Close).
+                        Let $x,y: A$, then we have a type which could be
+                        read x is infinitesimally close to y and is given as:
 
-                +tex(true).
-                    $$
-                        x \sim y =_{def} ι_A (x) = ι_B (y).
-                    $$
+                    +tex(true, false).
+                        $$
+                            x \sim y =_{def} ι_A (x) = ι_B (y).
+                        $$
 
                 +code.
-                    isInfinitesimalClose (X: U) (a x': X): U
-                       = Path (Im X) (ImUnit X a) (ImUnit X x')
+                    def ~ (X : U) (a x′ : X) : U := Path (ℑ X) (ι X a) (ι X x′)
                 br.
 
                 h1 FORMAL DISK BUNDLE
 
-                +tex.
-                    $\mathbf{Definition}$ (Formal Disk).
-                    Let $A$ be a type and $a:A$. The type $\mathbb{D}_a$
-                    defined below in three equivalent ways is called
-                    the formal disk at a:
-                    i) $\mathbb{D}_a$ is the sum of all point infinitesimal close to a;
+                p
+                    +tex(false, false).
+                        $\mathbf{Definition}$ (Formal Disk).
+                        Let $A$ be a type and $a:A$. The type $\mathbb{D}_a$
+                        defined below in three equivalent ways is called
+                        the formal disk at a:
+                        i) $\mathbb{D}_a$ is the sum of all point infinitesimal close to a;
 
-                +tex(true).
-                    $$
-                       \mathbb{D}_a =_{def} \sum_{x:A} x \sim a
-                    $$
+                    +tex(true, false).
+                        $$
+                           \mathbb{D}_a =_{def} \sum_{x:A} x \sim a
+                        $$
 
-                +tex.
-                    ii) $\mathbb{D}_a$ is a fiber of $ι_A$ at $ι_A(a)$;
-                    iii) $\mathbb{D}_a$ is defined as a pullback square:
+                    +tex(false, false).
+                        ii) $\mathbb{D}_a$ is a fiber of $ι_A$ at $ι_A(a)$;
+                        iii) $\mathbb{D}_a$ is defined as a pullback square:
 
-                +tex(true).
-                    $$
-                    \begin{array}{ccc}
-                        \mathbb{D}_a & \mapright{} & 1 \\
-                        \mapdown{} & \square & \mapdown{* \mapsto ι_A(a)} \\
-                        A & \mapright{ι_A} & Im(A) \\
-                    \end{array}
-                    $$
-
-                +code.
-                    formalDisc (X: U) (a: X): U
-                       = (x': X) * isInfinitesimalClose X a x'
-
-                +tex.
-                    $\mathbf{Definition}$ (Differential).
-                    If $f: A \rightarrow B$ is a type, there is a dependent function
-
-                +tex(true).
-                    $$
-                        df : \prod_{x:A} \mathbb{D}_x \rightarrow \mathbb{D}_{f(x)}
-                    $$
-
-                p.
-                    defined as
-
-                +tex(true).
-                    $$
-                       df_a =_{def} (x,ε) \mapsto (f(x),η^{−1}(x)•Im(f(ε))•η_f(x))
-                    $$
+                    +tex(true, false).
+                        $$
+                        \begin{array}{ccc}
+                            \mathbb{D}_a & \mapright{} & 1 \\
+                            \mapdown{} & & \mapdown{} \\
+                            A & \mapright{ι_A} & \mathrm{Im}(A) \\
+                        \end{array}
+                        $$
 
                 +code.
-                    differential (X Y: U) (f: X -> Y) (x: X)
-                      : formalDisc X x -> formalDisc Y (f x)
+                    def 𝔻 (X : U) (a : X) : U := Σ (x′ : X), ~ X a x′
 
-                +tex.
-                    $\mathbf{Definition}$ (Formal Disk Bundle).
-                    Let $A$ be a type. The type $T_\infty(A)$
-                    defined in one of the equivalent ways below
-                    is called the formal disk bundle of $A$:
-                    i) $T_\infty(A)$ is the sum over all formal disks in A:
+                p
+                    +tex(false, false).
+                        $\mathbf{Definition}$ (Differential).
+                        If $f: A \rightarrow B$ is a type, there is a dependent function
 
-                +tex(true).
-                    $$
-                      T_\infty(A) =_{def} \sum_{x:A}\mathbb{D}_x
-                    $$
-                    ii) $T_\infty(A)$ is defined by pullback square:
+                    +tex(true, false).
+                        $$
+                            \mathrm{d}f : \prod_{x:A} \mathbb{D}_x \rightarrow \mathbb{D}_{f(x)}
+                        $$
 
-                +tex(true).
-                    $$
-                    \begin{array}{ccc}
-                        T_\infty(A) & \mapright{} & A \\
-                        \mapdown{} & \square & \mapdown{ι_A} \\
-                        A & \mapright{ι_A} & Im(A) \\
-                    \end{array}
-                    $$
+                    .
+                        defined as
+
+                    +tex(true, false).
+                        $$
+                           \mathrm{d}f_a =_{def} (x,ε) \mapsto (f(x),η^{-1}_f(x) \trans \mathrm{Im}(f(ε)) \trans η_f(x))
+                        $$
 
                 +code.
-                    formalDiscBundle (A: U): U
-                      = (a: A) * formalDisc A a
+                    def inf-prox-ap (X Y : U) (f : X → Y) (x x′ : X)
+                        (p : ~ X x x′) : ~ Y (f x) (f x′) :=
+                    &lt;i&gt; ℑ-app X Y f (p @ i)
+
+                    def d (X Y : U) (f : X → Y) (x : X) (ε : 𝔻 X x) : 𝔻 Y (f x) :=
+                    (f ε.1, inf-prox-ap X Y f x ε.1 ε.2)
+
+                p
+                    +tex(false, false).
+                        $\mathbf{Definition}$ (Formal Disk Bundle).
+                        Let $A$ be a type. The type $T_\infty(A)$
+                        defined in one of the equivalent ways below
+                        is called the formal disk bundle of $A$:
+                        i) $T_\infty(A)$ is the sum over all formal disks in A:
+                        $T_\infty(A) =_{def} \sum_{x:A}\mathbb{D}_x$
+                        ii) $T_\infty(A)$ is defined by pullback square:
+
+                    +tex(true, false).
+                        $$
+                        \begin{array}{ccc}
+                            T_\infty(A) & \mapright{} & A \\
+                            \mapdown{} & \square & \mapdown{ι_A} \\
+                            A & \mapright{ι_A} & \mathrm{Im}(A) \\
+                        \end{array}
+                        $$
+
+                +code.
+                    def T∞ (A : U) : U := Σ (a : A), 𝔻 A a
 
                 +tex.
                     $\mathbf{Theorem}$ (Hennion).
@@ -191,22 +198,25 @@ block content
                     of the formal neighbourhood of the diagonal of $X$.
                     We may think of $T_\infty(X)$ as being the tangent complex of $X$.
 
-                +tex.
-                    $\mathbf{Theorem}$ (Kock). The infinitesimal disk bundle construction is
-                    left adjoint to the jet comonad:
+                p
+                    +tex(false, false).
+                        $\mathbf{Theorem}$ (Kock). The infinitesimal disk bundle construction is
+                        left adjoint to the jet comonad:
 
-                +tex(true).
-                    $$
-                        T_\infty \vdash Jet
-                    $$
+                    +tex(true, false).
+                        $$
+                            T_\infty \vdash Jet
+                        $$
 
-                +tex.
-                    $\mathbf{Definition}$ (Induced map).
-                    For a map $f : A \rightarrow B$ there is an
-                    induced map on the formal disk bundles, given as
-                    $$
-                        T_\infty(A) =_{def} (a,ε) \mapsto (f(a),df_a(ε))
-                    $$
+                p
+                    +tex(false, false).
+                        $\mathbf{Definition}$ (Induced map).
+                        For a map $f : A \rightarrow B$ there is an
+                        induced map on the formal disk bundles, given as
+                    +tex(true, false).
+                        $$
+                            T_\infty(A) =_{def} (a,ε) \mapsto (f(a), \mathrm{d}f_a(ε))
+                        $$
 
                 h1 MANIFOLDS
 
@@ -216,10 +226,14 @@ block content
                     i) $e:A$; ii) $t: \prod_{x:A} A = A$; iii) $p: \prod_{x:A}t_x(e) = x$.
 
                 +code.
-                    homogeneous (A: U): U
-                      = (e: A)
-                      * (translationsFamily: (x: A) -> Path U A A)
-                      * ((x: A) -> Path A (transport (translationsFamily x) e) x)
+                    def ∞-unital-magma (X : U) :=
+                    Σ (e : X) (μ : X → X → X), Π (x : X),
+                      Path X (μ e x) x × Path X (μ x e) x
+
+                    def is-left-invertible (X : U) (M : ∞-unital-magma X) :=
+                    Π (a : X), isEquiv X X (λ (x : X), M.μ x a)
+
+                    def H-space := Σ (X : U), ∞-unital-magma X
                 br.
 
                 h1 LITERATURE
