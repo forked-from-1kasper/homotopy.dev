@@ -1,3 +1,19 @@
+// Mixin usages in PUG:
+
+// +tex(false, false).
+//     $\mathbf{Definition}$ (Space of Sections). Let $\mathbf{H}$ be
+//     a $(\infty,1)$-topos, and let $E \rightarrow B : \mathbf{H}_{/B}$ a bundle in
+//     $\mathbf{H}$, object in the slice topos. Then the space of sections $\Gamma_\Sigma(E)$
+//     of this bundle is the Dependent Product.
+
+// +tex(true, false).
+//     $$
+//         \Gamma_\Sigma(E) = \Pi_\Sigma (E) \in \mathbf{H}.
+//     $$
+
+// +code.
+//     def Pi (A : U) (B : A → U) : U := Π (x : A), B x
+
 const {mathjax} = require('mathjax-full/js/mathjax.js');
 const {TeX} = require('mathjax-full/js/input/tex.js');
 const {SVG} = require('mathjax-full/js/output/svg.js');
@@ -12,7 +28,7 @@ const handler = RegisterHTMLHandler(adaptor);
 const tex = new TeX({
     packages: ['base', 'autoload', 'require', 'ams', 'amscd', 'newcommand', 'configmacros'],
     inlineMath: [ ["$", "$"] ],
-    macros: {
+    macros: {                                                                                       // Plug your Glyphs here
         llparenthesis: '\\mathopen{\u2987}',
         rrparenthesis: '\\mathclose{\u2988}',
         llbracket:     '\\mathopen{\u27E6}',
