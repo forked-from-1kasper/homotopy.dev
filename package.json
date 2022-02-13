@@ -17,9 +17,10 @@
   "dependencies": {
     "katex": "^0.15.2",
     "mathjax-full": "^3.2.0",
-    "node-sass": "^4.14.1",
-    "npm": "^6.13.4",
-    "pug": "^3.0.1",
+    "node-sass": "^7.0.1",
+    "npm": "^7.20.6",
+    "pug": "^3.0.2",
+    "pug-cli": "^1.0.0-alpha6",
     "sass": "^1.2.1"
   }
 }
